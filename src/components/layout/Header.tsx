@@ -40,44 +40,44 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 backdrop-blur-sm shadow-md py-3' 
-          : 'bg-transparent py-4'
+          ? 'bg-white/90 backdrop-blur-sm shadow-md py-2' 
+          : 'bg-transparent py-3'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-2">
             <img 
               src="/lovable-uploads/7d8b1801-1c96-468a-9000-c7b72f68c9a3.png" 
               alt="Court of Arms Logo" 
-              className="h-12 md:h-14"
+              className="h-10 md:h-12"
             />
             <div>
-              <h1 className="text-atdc-green text-lg md:text-xl font-bold leading-tight">
+              <h1 className="text-atdc-green text-sm md:text-base font-bold leading-tight">
                 Agriculture Training<br />Development Center
               </h1>
               <p className="text-xs text-atdc-brown">Ministry of Agriculture | Kenya</p>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <Link to="/" className={`nav-link ${location.pathname === '/' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+          {/* Desktop Navigation - Updated order */}
+          <nav className="hidden lg:flex items-center space-x-6">
+            <Link to="/" className={`nav-link text-sm ${location.pathname === '/' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
               Home
             </Link>
-            <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+            <Link to="/about" className={`nav-link text-sm ${location.pathname === '/about' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
               About Us
             </Link>
             
             {/* ATDC Stations Dropdown */}
             <div className="relative group">
               <button 
-                className={`flex items-center space-x-1 ${location.pathname.includes('/stations') ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}
+                className={`flex items-center space-x-1 text-sm ${location.pathname.includes('/stations') ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}
                 onClick={() => setIsStationsOpen(!isStationsOpen)}
               >
                 <span>ATDC Stations</span>
-                <ChevronDown size={16} />
+                <ChevronDown size={14} />
               </button>
               
               <div className="absolute left-0 mt-2 w-64 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white border border-gray-100 py-2 z-50">
@@ -102,25 +102,25 @@ const Header = () => {
               </div>
             </div>
 
-            <Link to="/events" className={`nav-link ${location.pathname === '/events' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
-              Events
-            </Link>
-            
-            <Link to="/blog" className={`nav-link ${location.pathname === '/blog' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
-              Blog
-            </Link>
-            
-            <Link to="/partners" className={`nav-link ${location.pathname === '/partners' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+            <Link to="/partners" className={`nav-link text-sm ${location.pathname === '/partners' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
               Partners
             </Link>
             
-            <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+            <Link to="/events" className={`nav-link text-sm ${location.pathname === '/events' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+              Events
+            </Link>
+            
+            <Link to="/blog" className={`nav-link text-sm ${location.pathname === '/blog' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+              Blog
+            </Link>
+            
+            <Link to="/contact" className={`nav-link text-sm ${location.pathname === '/contact' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
               Contact Us
             </Link>
             
-            <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90">
+            <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90 text-sm px-3 py-1 h-auto">
               <Link to="/login">
-                Login
+                Staff Portal
               </Link>
             </Button>
           </nav>
@@ -135,7 +135,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation Menu - Updated order */}
       <div 
         className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
@@ -144,14 +144,14 @@ const Header = () => {
         <div className="flex flex-col h-full pt-24 px-8 pb-6 overflow-y-auto">
           <Link 
             to="/"
-            className="py-3 text-lg border-b border-gray-100"
+            className="py-3 text-base border-b border-gray-100"
             onClick={() => setIsOpen(false)}
           >
             Home
           </Link>
           <Link 
             to="/about"
-            className="py-3 text-lg border-b border-gray-100"
+            className="py-3 text-base border-b border-gray-100"
             onClick={() => setIsOpen(false)}
           >
             About Us
@@ -160,7 +160,7 @@ const Header = () => {
           {/* Mobile ATDC Stations Dropdown */}
           <div className="py-3 border-b border-gray-100">
             <button 
-              className="flex items-center justify-between w-full text-lg"
+              className="flex items-center justify-between w-full text-base"
               onClick={() => setIsStationsOpen(!isStationsOpen)}
             >
               <span>ATDC Stations</span>
@@ -194,8 +194,16 @@ const Header = () => {
           </div>
           
           <Link 
+            to="/partners"
+            className="py-3 text-base border-b border-gray-100"
+            onClick={() => setIsOpen(false)}
+          >
+            Partners
+          </Link>
+          
+          <Link 
             to="/events"
-            className="py-3 text-lg border-b border-gray-100"
+            className="py-3 text-base border-b border-gray-100"
             onClick={() => setIsOpen(false)}
           >
             Events
@@ -203,23 +211,15 @@ const Header = () => {
           
           <Link 
             to="/blog"
-            className="py-3 text-lg border-b border-gray-100"
+            className="py-3 text-base border-b border-gray-100"
             onClick={() => setIsOpen(false)}
           >
             Blog
           </Link>
           
           <Link 
-            to="/partners"
-            className="py-3 text-lg border-b border-gray-100"
-            onClick={() => setIsOpen(false)}
-          >
-            Partners
-          </Link>
-          
-          <Link 
             to="/contact"
-            className="py-3 text-lg border-b border-gray-100"
+            className="py-3 text-base border-b border-gray-100"
             onClick={() => setIsOpen(false)}
           >
             Contact Us
@@ -228,7 +228,7 @@ const Header = () => {
           <div className="mt-auto">
             <Button asChild className="w-full bg-atdc-orange hover:bg-atdc-orange/90">
               <Link to="/login" onClick={() => setIsOpen(false)}>
-                Login
+                Staff Portal
               </Link>
             </Button>
           </div>

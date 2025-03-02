@@ -3,6 +3,7 @@ import Layout from '@/components/layout/Layout';
 import HeroSection from '@/components/shared/HeroSection';
 import StatsGrid from '@/components/shared/StatsGrid';
 import StationPreview from '@/components/shared/StationPreview';
+import PartnersCarousel from '@/components/shared/PartnersCarousel';
 import { ArrowRight, Tractor, Leaf, Users, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -16,7 +17,7 @@ const Index = () => {
         description="The Agriculture Training Development Center is dedicated to transforming agriculture through training, innovation, and sustainable practices."
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" className="bg-atdc-orange hover:bg-atdc-orange/90">
+          <Button asChild size="lg" className="bg-atdc-green hover:bg-atdc-green/90">
             <Link to="/about">
               Learn More <ArrowRight size={16} className="ml-2" />
             </Link>
@@ -47,14 +48,16 @@ const Index = () => {
       {/* Core Mandate Section */}
       <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-6">Our Core Mandate</h2>
+            <p className="text-gray-600 mb-6 max-w-3xl mx-auto">
+              The Agriculture Training Development Center (ATDC) is committed to building capacity 
+              in Kenya's agricultural sector through training, technology transfer, and support services.
+            </p>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-6">Our Core Mandate</h2>
-              <p className="text-gray-600 mb-6">
-                The Agriculture Training Development Center (ATDC) is committed to building capacity 
-                in Kenya's agricultural sector through training, technology transfer, and support services.
-              </p>
-              
+            <div>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
                   <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
@@ -104,17 +107,9 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-              
-              <div className="flex justify-center">
-                <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90">
-                  <Link to="/about">
-                    Read More About Us
-                  </Link>
-                </Button>
-              </div>
             </div>
             
-            <div className="order-1 lg:order-2">
+            <div>
               <div className="relative">
                 <div className="rounded-xl overflow-hidden shadow-xl animation-float">
                   <img 
@@ -128,11 +123,22 @@ const Index = () => {
               </div>
             </div>
           </div>
+          
+          <div className="flex justify-center mt-10">
+            <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90">
+              <Link to="/about">
+                Read More About Us
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* ATDC Stations Preview */}
       <StationPreview />
+      
+      {/* Partners Section */}
+      <PartnersCarousel />
     </Layout>
   );
 };

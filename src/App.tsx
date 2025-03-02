@@ -23,6 +23,11 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/events" element={<Events />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/stations/:stationId" element={<Login />} />
+          <Route path="/stations" element={<Login />} />
+          <Route path="/about" element={<Login />} />
+          <Route path="/partners" element={<Login />} />
+          <Route path="/contact" element={<Login />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

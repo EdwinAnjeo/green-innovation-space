@@ -11,7 +11,7 @@ interface StatCardProps {
 
 const StatCard = ({ icon, value, label, color }: StatCardProps) => {
   return (
-    <div className="glass-card p-6 animate-fade-in">
+    <div className="glass-card p-6 animate-fade-in text-center">
       <div className={`rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto ${color}`}>
         {icon}
       </div>

@@ -2,11 +2,11 @@
 import { useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-// Partner data
+// Partner data with updated logo URLs
 const partners = [
   {
     name: "National Agricultural and Rural Inclusive Growth Project (NARIGP)",
-    logo: "/lovable-uploads/393e137b-15c5-489d-8930-b1bbe97f47a9.png",
+    logo: "/lovable-uploads/3efe2b4e-7c58-4305-80a6-69d338efb5a8.png",
     description: "Supporting inclusive and sustainable agricultural growth"
   },
   {
@@ -16,7 +16,7 @@ const partners = [
   },
   {
     name: "Kenya Cereal Enhancement Programme (KCEP)",
-    logo: "/lovable-uploads/bc925f55-6a2f-489c-b412-09169e0ea40c.png",
+    logo: "/lovable-uploads/f22165ef-cea5-4463-97ba-dba0a7a9089b.png",
     description: "Improving food security through cereal production enhancement"
   },
   {
