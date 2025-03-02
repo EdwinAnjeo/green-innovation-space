@@ -2,9 +2,10 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 const StationPreview = () => {
-  const stations = [
+  const allStations = [
     {
       name: "ATDC Mpeketoni",
       image: "/lovable-uploads/ad276c5e-d66b-428d-bc21-c665d0afe25c.png",
@@ -57,6 +58,9 @@ const StationPreview = () => {
     }
   ];
   
+  // Display only 5 stations on the homepage
+  const previewStations = allStations.slice(0, 5);
+  
   return (
     <section className="bg-gray-50 py-16">
       <div className="container mx-auto px-4 md:px-6">
@@ -68,8 +72,10 @@ const StationPreview = () => {
           </p>
         </div>
         
+        <Separator className="mb-8 bg-gray-300" />
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {stations.map((station, index) => (
+          {previewStations.map((station, index) => (
             <div
               key={index}
               className="bg-white rounded-xl overflow-hidden shadow-md hover-scale h-full flex flex-col"

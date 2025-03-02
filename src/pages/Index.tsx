@@ -7,6 +7,7 @@ import PartnersCarousel from '@/components/shared/PartnersCarousel';
 import { ArrowRight, Tractor, Leaf, Users, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { Separator } from '@/components/ui/separator';
 
 const Index = () => {
   return (
@@ -41,6 +42,8 @@ const Index = () => {
             </p>
           </div>
           
+          <Separator className="mb-8 bg-gray-300" />
+          
           <StatsGrid />
         </div>
       </section>
@@ -56,8 +59,10 @@ const Index = () => {
             </p>
           </div>
           
+          <Separator className="mb-8 bg-gray-300" />
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="order-2 lg:order-1">
               <div className="space-y-4 mb-8">
                 <div className="flex items-start">
                   <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
@@ -109,7 +114,7 @@ const Index = () => {
               </div>
             </div>
             
-            <div>
+            <div className="order-1 lg:order-2">
               <div className="relative">
                 <div className="rounded-xl overflow-hidden shadow-xl animation-float">
                   <img 
