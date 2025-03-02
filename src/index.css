@@ -45,6 +45,14 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Custom color palette */
+    --atdc-purple: 255 85% 75%;  /* #9b87f5 */
+    --atdc-orange: 25 94% 53%;   /* #F97316 */
+    --atdc-blue: 200 96% 48%;    /* #0EA5E9 */
+    --atdc-soft-green: 90 70% 95%; /* #F2FCE2 */
+    --atdc-gray: 217 4% 57%;     /* #8E9196 */
+    --atdc-soft-bg: 248 92% 97%; /* #F1F0FB */
   }
 
   .dark {
@@ -129,3 +137,4 @@ html {
   padding: 0;
   overflow-x: hidden;
 }
+

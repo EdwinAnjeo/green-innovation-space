@@ -58,11 +58,11 @@ const StationPreview = () => {
     }
   ];
   
-  // Display only 5 stations on the homepage
-  const previewStations = allStations.slice(0, 5);
+  // Display only 3 stations on the homepage
+  const previewStations = allStations.slice(0, 3);
   
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-[#F2FCE2] py-16">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Our ATDC Stations</h2>
@@ -72,15 +72,13 @@ const StationPreview = () => {
           </p>
         </div>
         
-        <Separator className="mb-8 bg-gray-300" />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {previewStations.map((station, index) => (
             <div
               key={index}
               className="bg-white rounded-xl overflow-hidden shadow-md hover-scale h-full flex flex-col"
             >
-              <div className="h-40 overflow-hidden">
+              <div className="h-48 overflow-hidden">
                 <img
                   src={station.image}
                   alt={station.name}
@@ -105,7 +103,7 @@ const StationPreview = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
+          <Button asChild className="bg-[#F97316] hover:bg-[#F97316]/90">
             <Link to="/stations">
               View All Stations <ArrowRight size={16} className="ml-2" />
             </Link>

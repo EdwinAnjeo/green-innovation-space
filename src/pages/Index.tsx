@@ -32,7 +32,7 @@ const Index = () => {
       </HeroSection>
 
       {/* Stats Section */}
-      <section className="py-20">
+      <section className="py-20 bg-[#F1F0FB]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Our Impact</h2>
@@ -42,14 +42,14 @@ const Index = () => {
             </p>
           </div>
           
-          <Separator className="mb-8 bg-gray-300" />
-          
           <StatsGrid />
         </div>
       </section>
+      
+      <Separator className="h-1 bg-gray-200" />
 
       {/* Core Mandate Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-[#0EA5E9]/10">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-6">Our Core Mandate</h2>
@@ -59,12 +59,10 @@ const Index = () => {
             </p>
           </div>
           
-          <Separator className="mb-8 bg-gray-300" />
-          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
               <div className="space-y-4 mb-8">
-                <div className="flex items-start">
+                <div className="flex items-start justify-center">
                   <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
                     <Tractor size={24} className="text-atdc-green" />
                   </div>
@@ -76,7 +74,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start">
+                <div className="flex items-start justify-center">
                   <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
                     <Leaf size={24} className="text-atdc-green" />
                   </div>
@@ -88,7 +86,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start">
+                <div className="flex items-start justify-center">
                   <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
                     <Users size={24} className="text-atdc-green" />
                   </div>
@@ -100,7 +98,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start">
+                <div className="flex items-start justify-center">
                   <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
                     <Award size={24} className="text-atdc-green" />
                   </div>
@@ -118,19 +116,19 @@ const Index = () => {
               <div className="relative">
                 <div className="rounded-xl overflow-hidden shadow-xl animation-float">
                   <img 
-                    src="/lovable-uploads/9d1cc947-7e5c-4104-8732-2754746d3545.png" 
-                    alt="ATDC Team Member" 
+                    src="/lovable-uploads/87a057d4-92b9-4e7e-af58-ff17b236dead.png" 
+                    alt="ATDC Tractor" 
                     className="w-full h-auto"
                   />
                 </div>
-                <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-atdc-orange/20 rounded-full blur-3xl"></div>
-                <div className="absolute -top-8 -right-8 w-40 h-40 bg-atdc-blue/20 rounded-full blur-3xl"></div>
+                <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-[#F97316]/20 rounded-full blur-3xl"></div>
+                <div className="absolute -top-8 -right-8 w-40 h-40 bg-[#0EA5E9]/20 rounded-full blur-3xl"></div>
               </div>
             </div>
           </div>
           
           <div className="flex justify-center mt-10">
-            <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90">
+            <Button asChild className="bg-[#F97316] hover:bg-[#F97316]/90">
               <Link to="/about">
                 Read More About Us
               </Link>
@@ -138,9 +136,13 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      <Separator className="h-1 bg-gray-200" />
 
       {/* ATDC Stations Preview */}
       <StationPreview />
+      
+      <Separator className="h-1 bg-gray-200" />
       
       {/* Partners Section */}
       <PartnersCarousel />

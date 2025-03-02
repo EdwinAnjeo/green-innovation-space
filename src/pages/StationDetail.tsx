@@ -1,19 +1,18 @@
-
 import { useParams } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Phone, Mail, Users, CheckCircle2, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
-// Example station data - in a real app, this would come from an API
+// Updated station data with correct images
 const stationsData = {
-  "mombasa": {
-    name: "Mombasa ATDC",
-    image: "https://images.unsplash.com/photo-1580392734071-3b9cf323cf4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "mpeketoni": {
+    name: "ATDC Mpeketoni",
+    image: "/lovable-uploads/ad276c5e-d66b-428d-bc21-c665d0afe25c.png",
     region: "Coast",
-    address: "Mombasa-Malindi Road, Nyali, Mombasa",
+    address: "Mpeketoni, Lamu County",
     phone: "+254 712 345 678",
-    email: "mombasa@atdc.agriculture.go.ke",
+    email: "mpeketoni@atdc.agriculture.go.ke",
     engineer: {
       name: "Eng. Omar Hassan",
       photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
@@ -50,18 +49,18 @@ const stationsData = {
       }
     ]
   },
-  "nairobi": {
-    name: "Nairobi ATDC",
-    image: "https://images.unsplash.com/photo-1598515212648-8eff74c323a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    region: "Central",
-    address: "Waiyaki Way, Westlands, Nairobi",
+  "mtwapa": {
+    name: "ATDC Mtwapa",
+    image: "/lovable-uploads/110e6d67-493c-4314-bce6-0d3ad2358ce8.png",
+    region: "Coast",
+    address: "Mtwapa, Kilifi County",
     phone: "+254 723 456 789",
-    email: "nairobi@atdc.agriculture.go.ke",
+    email: "mtwapa@atdc.agriculture.go.ke",
     engineer: {
       name: "Eng. Lucy Kamau",
       photo: "https://images.unsplash.com/photo-1601841197690-6f0838bdb005?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      bio: "Eng. Kamau specializes in urban farming technologies and has pioneered several vertical farming projects across Kenya's urban centers.",
-      comment: "Urban farming is not just about food production; it's about creating sustainable cities and reconnecting urban dwellers with their food systems."
+      bio: "Eng. Kamau specializes in coastal agricultural technologies and has pioneered several innovative farming projects.",
+      comment: "At Mtwapa ATDC, we focus on coastal agricultural research and development to enhance food security in the region."
     },
     staff: {
       total: 18,
@@ -73,12 +72,12 @@ const stationsData = {
       ]
     },
     functions: [
-      "Training on urban farming techniques",
+      "Training on coastal agricultural techniques",
       "Developing and promoting vertical farming systems",
       "Supporting rooftop garden initiatives",
       "Promoting hydroponics and aquaponics",
       "Conducting research on urban food security",
-      "Providing extension services to urban farmers"
+      "Providing extension services to coastal farmers"
     ],
     successStories: [
       {
@@ -93,18 +92,18 @@ const stationsData = {
       }
     ]
   },
-  "kisumu": {
-    name: "Kisumu ATDC",
-    image: "https://images.unsplash.com/photo-1594112885345-afd6c1ae93fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    region: "Western",
-    address: "Kisumu-Kakamega Road, Kisumu",
+  "nakuru": {
+    name: "ATDC Nakuru",
+    image: "/lovable-uploads/779c56b6-c1af-4e6c-bb82-25559402520c.png",
+    region: "Rift Valley",
+    address: "Nakuru-Eldoret Highway, Nakuru",
     phone: "+254 734 567 890",
-    email: "kisumu@atdc.agriculture.go.ke",
+    email: "nakuru@atdc.agriculture.go.ke",
     engineer: {
       name: "Eng. David Odhiambo",
       photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      bio: "Eng. Odhiambo is an expert in aquaculture and rice production systems with extensive experience in the Lake Victoria basin.",
-      comment: "The lake region has immense potential for integrated rice and fish farming, which can significantly improve both food security and livelihoods."
+      bio: "Eng. Odhiambo is an expert in agricultural innovation and technology transfer with extensive experience in the Rift Valley region.",
+      comment: "We are dedicated to introducing innovative agricultural technologies that are suitable for the diverse Rift Valley landscape."
     },
     staff: {
       total: 16,
@@ -133,6 +132,272 @@ const stationsData = {
         title: "Youth Aquaculture Initiative",
         image: "https://images.unsplash.com/photo-1559113202-7e00c8c7e929?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         story: "A group of 30 young entrepreneurs received comprehensive training in cage fish farming on Lake Victoria. With mentorship from Kisumu ATDC, they have established a thriving business that produces over 5 tonnes of fish monthly and has created jobs for 50 people in the community."
+      }
+    ]
+  },
+  "bungoma": {
+    name: "ATDC Bungoma",
+    image: "/lovable-uploads/6e0f94ff-4fa7-4701-bc2d-69b0182f64ba.png",
+    region: "Western",
+    address: "Bungoma-Malaba Road, Bungoma",
+    phone: "+254 745 678 901",
+    email: "bungoma@atdc.agriculture.go.ke",
+    engineer: {
+      name: "Eng. Florence Wekesa",
+      photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Eng. Wekesa has dedicated her career to improving agricultural practices in Western Kenya with a focus on sustainable farming.",
+      comment: "Our center works closely with local communities to develop and implement agricultural solutions tailored to Western Kenya's unique needs."
+    },
+    staff: {
+      total: 16,
+      breakdown: [
+        { title: "Agricultural Engineers", count: 3 },
+        { title: "Agricultural Extension Officers", count: 6 },
+        { title: "Administrative Staff", count: 4 },
+        { title: "Support Staff", count: 3 }
+      ]
+    },
+    functions: [
+      "Training on crop production techniques",
+      "Supporting livestock development",
+      "Promoting sustainable farming practices",
+      "Demonstrating appropriate technologies",
+      "Conducting research on local farming challenges",
+      "Providing extension services to local farmers"
+    ],
+    successStories: [
+      {
+        title: "Community Farming Project",
+        image: "https://images.unsplash.com/photo-1506184169200-67f9a6593556?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        story: "Through training and support from our ATDC, a local farming community adopted improved agricultural practices that increased their productivity by 35% and significantly improved their livelihoods."
+      }
+    ]
+  },
+  "siakago": {
+    name: "ATDC Siakago",
+    image: "/lovable-uploads/0dec4fcd-07ca-4057-9198-a6e5b1961d49.png",
+    region: "Eastern",
+    address: "Embu-Meru Road, Siakago",
+    phone: "+254 756 789 012",
+    email: "siakago@atdc.agriculture.go.ke",
+    engineer: {
+      name: "Eng. James Mutua",
+      photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Eng. Mutua is specialized in agricultural training programs and development strategies for Eastern Kenya.",
+      comment: "We empower farmers in Eastern Kenya with the knowledge and skills needed to improve productivity and sustainability."
+    },
+    staff: {
+      total: 16,
+      breakdown: [
+        { title: "Agricultural Engineers", count: 3 },
+        { title: "Agricultural Extension Officers", count: 6 },
+        { title: "Administrative Staff", count: 4 },
+        { title: "Support Staff", count: 3 }
+      ]
+    },
+    functions: [
+      "Training on crop production techniques",
+      "Supporting livestock development",
+      "Promoting sustainable farming practices",
+      "Demonstrating appropriate technologies",
+      "Conducting research on local farming challenges",
+      "Providing extension services to local farmers"
+    ],
+    successStories: [
+      {
+        title: "Community Farming Project",
+        image: "https://images.unsplash.com/photo-1506184169200-67f9a6593556?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        story: "Through training and support from our ATDC, a local farming community adopted improved agricultural practices that increased their productivity by 35% and significantly improved their livelihoods."
+      }
+    ]
+  },
+  "bukura": {
+    name: "ATDC Bukura",
+    image: "/lovable-uploads/25322486-92b7-45ea-837c-4360c9f718fc.png",
+    region: "Western",
+    address: "Kakamega-Kisumu Road, Bukura",
+    phone: "+254 767 890 123",
+    email: "bukura@atdc.agriculture.go.ke",
+    engineer: {
+      name: "Eng. Patrick Ouma",
+      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Eng. Ouma has extensive experience in agricultural mechanization and training farmers on modern farming techniques.",
+      comment: "Our center specializes in agricultural mechanization and training to help farmers improve efficiency and productivity."
+    },
+    staff: {
+      total: 16,
+      breakdown: [
+        { title: "Agricultural Engineers", count: 3 },
+        { title: "Agricultural Extension Officers", count: 6 },
+        { title: "Administrative Staff", count: 4 },
+        { title: "Support Staff", count: 3 }
+      ]
+    },
+    functions: [
+      "Training on crop production techniques",
+      "Supporting livestock development",
+      "Promoting sustainable farming practices",
+      "Demonstrating appropriate technologies",
+      "Conducting research on local farming challenges",
+      "Providing extension services to local farmers"
+    ],
+    successStories: [
+      {
+        title: "Community Farming Project",
+        image: "https://images.unsplash.com/photo-1506184169200-67f9a6593556?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        story: "Through training and support from our ATDC, a local farming community adopted improved agricultural practices that increased their productivity by 35% and significantly improved their livelihoods."
+      }
+    ]
+  },
+  "ruiru": {
+    name: "ATDC Ruiru",
+    image: "/lovable-uploads/237d93b7-93f1-44f9-9c4b-94e1268412a8.png",
+    region: "Central",
+    address: "Thika Road, Ruiru",
+    phone: "+254 778 901 234",
+    email: "ruiru@atdc.agriculture.go.ke",
+    engineer: {
+      name: "Eng. Catherine Wanjiku",
+      photo: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Eng. Wanjiku is an agricultural expert focusing on urban and peri-urban farming techniques in Central Kenya.",
+      comment: "We are committed to helping farmers in Central Kenya adapt to modern agricultural practices and technologies."
+    },
+    staff: {
+      total: 16,
+      breakdown: [
+        { title: "Agricultural Engineers", count: 3 },
+        { title: "Agricultural Extension Officers", count: 6 },
+        { title: "Administrative Staff", count: 4 },
+        { title: "Support Staff", count: 3 }
+      ]
+    },
+    functions: [
+      "Training on crop production techniques",
+      "Supporting livestock development",
+      "Promoting sustainable farming practices",
+      "Demonstrating appropriate technologies",
+      "Conducting research on local farming challenges",
+      "Providing extension services to local farmers"
+    ],
+    successStories: [
+      {
+        title: "Community Farming Project",
+        image: "https://images.unsplash.com/photo-1506184169200-67f9a6593556?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        story: "Through training and support from our ATDC, a local farming community adopted improved agricultural practices that increased their productivity by 35% and significantly improved their livelihoods."
+      }
+    ]
+  },
+  "homabay": {
+    name: "ATDC Homabay",
+    image: "/lovable-uploads/2a47bab3-fc95-46fb-a1e8-335b55df074b.png",
+    region: "Nyanza",
+    address: "Kisumu-Homabay Road, Homabay",
+    phone: "+254 789 012 345",
+    email: "homabay@atdc.agriculture.go.ke",
+    engineer: {
+      name: "Eng. Michael Otieno",
+      photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Eng. Otieno specializes in agricultural development and support programs for the Nyanza region.",
+      comment: "Our center focuses on developing and implementing agricultural solutions tailored to the unique needs of the Nyanza region."
+    },
+    staff: {
+      total: 16,
+      breakdown: [
+        { title: "Agricultural Engineers", count: 3 },
+        { title: "Agricultural Extension Officers", count: 6 },
+        { title: "Administrative Staff", count: 4 },
+        { title: "Support Staff", count: 3 }
+      ]
+    },
+    functions: [
+      "Training on crop production techniques",
+      "Supporting livestock development",
+      "Promoting sustainable farming practices",
+      "Demonstrating appropriate technologies",
+      "Conducting research on local farming challenges",
+      "Providing extension services to local farmers"
+    ],
+    successStories: [
+      {
+        title: "Community Farming Project",
+        image: "https://images.unsplash.com/photo-1506184169200-67f9a6593556?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        story: "Through training and support from our ATDC, a local farming community adopted improved agricultural practices that increased their productivity by 35% and significantly improved their livelihoods."
+      }
+    ]
+  },
+  "siaya": {
+    name: "ATDC Siaya",
+    image: "/lovable-uploads/d0c15681-662b-4837-a17c-4178efc8f433.png",
+    region: "Nyanza",
+    address: "Kisumu-Busia Road, Siaya",
+    phone: "+254 790 123 456",
+    email: "siaya@atdc.agriculture.go.ke",
+    engineer: {
+      name: "Eng. Rose Achieng",
+      photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Eng. Achieng is passionate about sustainable farming practices and agricultural technologies for Nyanza region.",
+      comment: "We focus on promoting sustainable farming practices and introducing new agricultural technologies to farmers in Siaya."
+    },
+    staff: {
+      total: 16,
+      breakdown: [
+        { title: "Agricultural Engineers", count: 3 },
+        { title: "Agricultural Extension Officers", count: 6 },
+        { title: "Administrative Staff", count: 4 },
+        { title: "Support Staff", count: 3 }
+      ]
+    },
+    functions: [
+      "Training on crop production techniques",
+      "Supporting livestock development",
+      "Promoting sustainable farming practices",
+      "Demonstrating appropriate technologies",
+      "Conducting research on local farming challenges",
+      "Providing extension services to local farmers"
+    ],
+    successStories: [
+      {
+        title: "Community Farming Project",
+        image: "https://images.unsplash.com/photo-1506184169200-67f9a6593556?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        story: "Through training and support from our ATDC, a local farming community adopted improved agricultural practices that increased their productivity by 35% and significantly improved their livelihoods."
+      }
+    ]
+  },
+  "katumani": {
+    name: "ATDC Katumani",
+    image: "/lovable-uploads/2a47bab3-fc95-46fb-a1e8-335b55df074b.png",
+    region: "Eastern",
+    address: "Machakos-Wote Road, Katumani",
+    phone: "+254 701 234 567",
+    email: "katumani@atdc.agriculture.go.ke",
+    engineer: {
+      name: "Eng. Samuel Mwangi",
+      photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+      bio: "Eng. Mwangi is an expert in arid and semi-arid land agriculture with over 20 years of experience.",
+      comment: "Our center specializes in developing agricultural solutions for arid and semi-arid regions to ensure food security."
+    },
+    staff: {
+      total: 16,
+      breakdown: [
+        { title: "Agricultural Engineers", count: 3 },
+        { title: "Agricultural Extension Officers", count: 6 },
+        { title: "Administrative Staff", count: 4 },
+        { title: "Support Staff", count: 3 }
+      ]
+    },
+    functions: [
+      "Training on crop production techniques",
+      "Supporting livestock development",
+      "Promoting sustainable farming practices",
+      "Demonstrating appropriate technologies",
+      "Conducting research on local farming challenges",
+      "Providing extension services to local farmers"
+    ],
+    successStories: [
+      {
+        title: "Community Farming Project",
+        image: "https://images.unsplash.com/photo-1506184169200-67f9a6593556?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        story: "Through training and support from our ATDC, a local farming community adopted improved agricultural practices that increased their productivity by 35% and significantly improved their livelihoods."
       }
     ]
   }

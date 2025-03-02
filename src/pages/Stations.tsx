@@ -5,70 +5,77 @@ import HeroSection from '@/components/shared/HeroSection';
 import { Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Station data
+// Station data with correct images
 const stationsData = [
   {
-    id: "mombasa",
-    name: "Mombasa ATDC",
+    id: "mpeketoni",
+    name: "ATDC Mpeketoni",
     region: "Coast",
     specialization: "Coastal Agriculture, Fisheries",
-    image: "https://images.unsplash.com/photo-1580392734071-3b9cf323cf4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    image: "/lovable-uploads/ad276c5e-d66b-428d-bc21-c665d0afe25c.png"
   },
   {
-    id: "kilifi",
-    name: "Kilifi ATDC",
+    id: "mtwapa",
+    name: "ATDC Mtwapa",
     region: "Coast",
-    specialization: "Horticulture, Cashew Farming",
-    image: "https://images.unsplash.com/photo-1595853035070-59a39f319289?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: "taita-taveta",
-    name: "Taita Taveta ATDC",
-    region: "Coast",
-    specialization: "Highland Crops, Conservation Agriculture",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: "nairobi",
-    name: "Nairobi ATDC",
-    region: "Central",
-    specialization: "Urban Farming, Agricultural Innovation",
-    image: "https://images.unsplash.com/photo-1598515212648-8eff74c323a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    id: "kiambu",
-    name: "Kiambu ATDC",
-    region: "Central",
-    specialization: "Dairy Farming, Coffee Production",
-    image: "https://images.unsplash.com/photo-1501763966092-9aa4ec850e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    specialization: "Coastal agricultural research and development",
+    image: "/lovable-uploads/110e6d67-493c-4314-bce6-0d3ad2358ce8.png"
   },
   {
     id: "nakuru",
-    name: "Nakuru ATDC",
+    name: "ATDC Nakuru",
     region: "Rift Valley",
-    specialization: "Mixed Farming, Agroforestry",
-    image: "https://images.unsplash.com/photo-1506184169200-67f9a6593556?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    specialization: "Agricultural innovation and technology transfer",
+    image: "/lovable-uploads/779c56b6-c1af-4e6c-bb82-25559402520c.png"
   },
   {
-    id: "kisumu",
-    name: "Kisumu ATDC",
+    id: "bungoma",
+    name: "ATDC Bungoma",
     region: "Western",
-    specialization: "Aquaculture, Rice Farming",
-    image: "https://images.unsplash.com/photo-1594112885345-afd6c1ae93fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    specialization: "Western region agriculture and technology development",
+    image: "/lovable-uploads/6e0f94ff-4fa7-4701-bc2d-69b0182f64ba.png"
   },
   {
-    id: "kakamega",
-    name: "Kakamega ATDC",
+    id: "siakago",
+    name: "ATDC Siakago",
+    region: "Eastern",
+    specialization: "Eastern region agricultural training and development",
+    image: "/lovable-uploads/0dec4fcd-07ca-4057-9198-a6e5b1961d49.png"
+  },
+  {
+    id: "bukura",
+    name: "ATDC Bukura",
     region: "Western",
-    specialization: "Sugarcane Farming, Maize Production",
-    image: "https://images.unsplash.com/photo-1570912355026-d029dbf93c7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    specialization: "Specialized in agricultural mechanization and training",
+    image: "/lovable-uploads/25322486-92b7-45ea-837c-4360c9f718fc.png"
   },
   {
-    id: "garissa",
-    name: "Garissa ATDC",
-    region: "North Eastern",
-    specialization: "Dryland Agriculture, Livestock Management",
-    image: "https://images.unsplash.com/photo-1587825045005-8fd9653dc0e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    id: "ruiru",
+    name: "ATDC Ruiru",
+    region: "Central",
+    specialization: "Central region agricultural training center",
+    image: "/lovable-uploads/237d93b7-93f1-44f9-9c4b-94e1268412a8.png"
+  },
+  {
+    id: "homabay",
+    name: "ATDC Homabay",
+    region: "Nyanza",
+    specialization: "Nyanza region agricultural development and support",
+    image: "/lovable-uploads/2a47bab3-fc95-46fb-a1e8-335b55df074b.png"
+  },
+  {
+    id: "siaya",
+    name: "ATDC Siaya",
+    region: "Nyanza",
+    specialization: "Focus on sustainable farming and agricultural technologies",
+    image: "/lovable-uploads/d0c15681-662b-4837-a17c-4178efc8f433.png"
+  },
+  {
+    id: "katumani",
+    name: "ATDC Katumani",
+    region: "Eastern",
+    specialization: "Specializing in arid and semi-arid land agriculture",
+    image: "/lovable-uploads/2a47bab3-fc95-46fb-a1e8-335b55df074b.png"
   }
 ];
 
@@ -99,7 +106,7 @@ const StationsPage = () => {
       />
       
       {/* Filter and Search Section */}
-      <section className="py-12">
+      <section className="py-12 bg-[#9b87f5]/10">
         <div className="container mx-auto px-4 md:px-6">
           <div className="bg-white shadow-md rounded-xl p-6 -mt-20 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -142,7 +149,7 @@ const StationsPage = () => {
       </section>
       
       {/* Stations Grid */}
-      <section className="py-12">
+      <section className="py-12 bg-[#F2FCE2]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredStations.length > 0 ? (
