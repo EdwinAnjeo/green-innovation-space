@@ -6,19 +6,19 @@ import { Button } from '@/components/ui/button';
 const StationPreview = () => {
   const stations = [
     {
-      name: "Mombasa ATDC",
-      image: "https://images.unsplash.com/photo-1561747709-b5d95815ae26?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      name: "ATDC Mpeketoni",
+      image: "/lovable-uploads/ad276c5e-d66b-428d-bc21-c665d0afe25c.png",
       description: "Specializing in coastal agriculture and fisheries."
     },
     {
-      name: "Nairobi ATDC",
-      image: "https://images.unsplash.com/photo-1630778699239-4b825d764cd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Urban farming and agricultural innovation."
+      name: "ATDC Nakuru",
+      image: "/lovable-uploads/779c56b6-c1af-4e6c-bb82-25559402520c.png",
+      description: "Agricultural innovation and technology transfer."
     },
     {
-      name: "Kisumu ATDC",
-      image: "https://images.unsplash.com/photo-1615424444944-42acce445c0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Lake region agriculture and aquaculture."
+      name: "ATDC Bungoma",
+      image: "/lovable-uploads/6e0f94ff-4fa7-4701-bc2d-69b0182f64ba.png",
+      description: "Western region agriculture and technology development."
     }
   ];
   
@@ -49,7 +49,7 @@ const StationPreview = () => {
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{station.name}</h3>
                 <p className="text-gray-600 mb-4">{station.description}</p>
-                <Link to={`/stations/${station.name.split(' ')[0].toLowerCase()}`} className="text-atdc-green font-medium inline-flex items-center hover:underline">
+                <Link to={`/stations/${station.name.split(' ')[1].toLowerCase()}`} className="text-atdc-green font-medium inline-flex items-center hover:underline">
                   Learn more
                   <ArrowRight size={16} className="ml-1" />
                 </Link>
@@ -59,7 +59,7 @@ const StationPreview = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
+          <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90">
             <Link to="/stations">
               View All Stations <ArrowRight size={16} className="ml-2" />
             </Link>

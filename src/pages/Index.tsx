@@ -16,7 +16,7 @@ const Index = () => {
         description="The Agriculture Training Development Center is dedicated to transforming agriculture through training, innovation, and sustainable practices."
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" className="bg-atdc-green hover:bg-atdc-green/90">
+          <Button asChild size="lg" className="bg-atdc-orange hover:bg-atdc-orange/90">
             <Link to="/about">
               Learn More <ArrowRight size={16} className="ml-2" />
             </Link>
@@ -105,19 +105,21 @@ const Index = () => {
                 </div>
               </div>
               
-              <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
-                <Link to="/about">
-                  Read More About Us
-                </Link>
-              </Button>
+              <div className="flex justify-center">
+                <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90">
+                  <Link to="/about">
+                    Read More About Us
+                  </Link>
+                </Button>
+              </div>
             </div>
             
             <div className="order-1 lg:order-2">
               <div className="relative">
                 <div className="rounded-xl overflow-hidden shadow-xl animation-float">
                   <img 
-                    src="https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                    alt="Farmer training" 
+                    src="/lovable-uploads/9d1cc947-7e5c-4104-8732-2754746d3545.png" 
+                    alt="ATDC Team Member" 
                     className="w-full h-auto"
                   />
                 </div>

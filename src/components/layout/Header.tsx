@@ -6,10 +6,8 @@ import { Button } from "@/components/ui/button";
 
 // Array of ATDC Stations for the dropdown
 const stations = [
-  "Mombasa", "Kwale", "Kilifi", "Tana River", "Lamu", "Taita Taveta", 
-  "Garissa", "Wajir", "Mandera", "Marsabit", "Isiolo", "Meru", 
-  "Tharaka-Nithi", "Embu", "Kitui", "Machakos", "Makueni", "Nyandarua", 
-  "Nyeri", "Kirinyaga", "Murang'a", "Kiambu", "Turkana", "West Pokot"
+  "Mpeketoni", "Mtwapa", "Nakuru", "Bungoma", "Siakago", 
+  "Bukura", "Ruiru", "Homabay", "Siaya", "Katumani"
 ];
 
 const Header = () => {
@@ -51,7 +49,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="https://assets.churchofjesuschrist.org/581f6f9/websites/common/ui/img/logo-kenya.svg" 
+              src="/lovable-uploads/7d8b1801-1c96-468a-9000-c7b72f68c9a3.png" 
               alt="Court of Arms Logo" 
               className="h-12 md:h-14"
             />
@@ -94,24 +92,33 @@ const Header = () => {
                   {stations.map((station) => (
                     <Link 
                       key={station}
-                      to={`/stations/${station.toLowerCase().replace(/\s+/g, '-')}`}
+                      to={`/stations/${station.toLowerCase()}`}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-atdc-green"
                     >
-                      {station}
+                      ATDC {station}
                     </Link>
                   ))}
                 </div>
               </div>
             </div>
 
+            <Link to="/events" className={`nav-link ${location.pathname === '/events' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+              Events
+            </Link>
+            
+            <Link to="/blog" className={`nav-link ${location.pathname === '/blog' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+              Blog
+            </Link>
+            
             <Link to="/partners" className={`nav-link ${location.pathname === '/partners' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
               Partners
             </Link>
+            
             <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
               Contact Us
             </Link>
             
-            <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
+            <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90">
               <Link to="/login">
                 Login
               </Link>
@@ -175,16 +182,32 @@ const Header = () => {
                 {stations.map((station) => (
                   <Link 
                     key={station}
-                    to={`/stations/${station.toLowerCase().replace(/\s+/g, '-')}`}
+                    to={`/stations/${station.toLowerCase()}`}
                     className="block py-2 text-gray-700"
                     onClick={() => setIsOpen(false)}
                   >
-                    {station}
+                    ATDC {station}
                   </Link>
                 ))}
               </div>
             )}
           </div>
+          
+          <Link 
+            to="/events"
+            className="py-3 text-lg border-b border-gray-100"
+            onClick={() => setIsOpen(false)}
+          >
+            Events
+          </Link>
+          
+          <Link 
+            to="/blog"
+            className="py-3 text-lg border-b border-gray-100"
+            onClick={() => setIsOpen(false)}
+          >
+            Blog
+          </Link>
           
           <Link 
             to="/partners"
@@ -193,6 +216,7 @@ const Header = () => {
           >
             Partners
           </Link>
+          
           <Link 
             to="/contact"
             className="py-3 text-lg border-b border-gray-100"
@@ -202,7 +226,7 @@ const Header = () => {
           </Link>
           
           <div className="mt-auto">
-            <Button asChild className="w-full bg-atdc-green hover:bg-atdc-green/90">
+            <Button asChild className="w-full bg-atdc-orange hover:bg-atdc-orange/90">
               <Link to="/login" onClick={() => setIsOpen(false)}>
                 Login
               </Link>

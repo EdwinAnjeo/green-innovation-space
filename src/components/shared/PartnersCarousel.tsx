@@ -1,38 +1,28 @@
 
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 // Partner data
 const partners = [
   {
-    name: "Kenya Agricultural and Livestock Research Organization (KALRO)",
-    logo: "https://www.kalro.org/wp-content/uploads/2020/02/kalro-logo.png",
-    description: "Research and innovation partner for agricultural advancement"
+    name: "National Agricultural and Rural Inclusive Growth Project (NARIGP)",
+    logo: "/lovable-uploads/393e137b-15c5-489d-8930-b1bbe97f47a9.png",
+    description: "Supporting inclusive and sustainable agricultural growth"
   },
   {
-    name: "Food and Agriculture Organization (FAO)",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/FAO_logo.svg/1200px-FAO_logo.svg.png",
-    description: "Supporting sustainable agricultural practices and food security"
+    name: "Small Scale Irrigation & Value Addition Project (SIVAP)",
+    logo: "/lovable-uploads/066da1e9-8b5a-461f-b6b8-09ea6dbed5a0.png",
+    description: "Enhancing irrigation infrastructure and value addition capabilities"
   },
   {
-    name: "International Fund for Agricultural Development (IFAD)",
-    logo: "https://static.wixstatic.com/media/df1fbb_e0bacdbb0e9646538b94351f98f6d471~mv2.png",
-    description: "Financing agricultural development and rural transformation"
+    name: "Kenya Cereal Enhancement Programme (KCEP)",
+    logo: "/lovable-uploads/bc925f55-6a2f-489c-b412-09169e0ea40c.png",
+    description: "Improving food security through cereal production enhancement"
   },
   {
-    name: "World Bank",
-    logo: "https://cdn.shortpixel.ai/spai/q_lossy+w_924+to_webp+ret_img/www.abcnews.co.ke/wp-content/uploads/2023/07/1627029222-768x427-1.png",
-    description: "Supporting agricultural infrastructure and policy development"
-  },
-  {
-    name: "Alliance for a Green Revolution in Africa (AGRA)",
-    logo: "https://agra.org/wp-content/uploads/2020/07/logo_mainheader.svg",
-    description: "Transforming smallholder agriculture across Africa"
-  },
-  {
-    name: "Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ)",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/GIZ-logo.svg/1200px-GIZ-logo.svg.png",
-    description: "Technical cooperation for sustainable development"
+    name: "Japanese International Cooperation Agency (JICA)",
+    logo: "/lovable-uploads/157d64f5-29e9-44b9-9de3-2bb3f7237c93.png",
+    description: "Technical cooperation for sustainable agricultural development"
   }
 ];
 
@@ -99,7 +89,7 @@ const PartnersCarousel = () => {
                   />
                 </div>
                 <div className="p-6 border-t">
-                  <h3 className="font-bold text-lg mb-2 line-clamp-1">{partner.name}</h3>
+                  <h3 className="font-bold text-lg mb-2 line-clamp-2">{partner.name}</h3>
                   <p className="text-gray-600 text-sm">{partner.description}</p>
                 </div>
               </div>

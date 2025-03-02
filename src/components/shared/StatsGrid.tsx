@@ -25,27 +25,27 @@ const StatsGrid = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <StatCard 
-        icon={<Users size={24} className="text-white" />}
-        value="50,000+"
-        label="Farmers Trained"
+        icon={<Home size={24} className="text-white" />}
+        value="10"
+        label="Stations across the country to cover all the 47 counties in Kenya"
         color="bg-atdc-green"
       />
       <StatCard 
         icon={<Award size={24} className="text-white" />}
-        value="200+"
-        label="Training Programs"
+        value="30+"
+        label="Established technologies per year across different value chains in the country"
         color="bg-atdc-brown"
       />
       <StatCard 
-        icon={<Home size={24} className="text-white" />}
-        value="24"
-        label="ATDC Stations"
+        icon={<BookOpen size={24} className="text-white" />}
+        value="76"
+        label="Projects Managed by ATDC Engineers in different counties annually"
         color="bg-atdc-blue"
       />
       <StatCard 
-        icon={<BookOpen size={24} className="text-white" />}
-        value="15+"
-        label="Years of Excellence"
+        icon={<Users size={24} className="text-white" />}
+        value="55"
+        label="Professional Engineers, Food Scientists & Technicians at each Station"
         color="bg-atdc-orange"
       />
     </div>
