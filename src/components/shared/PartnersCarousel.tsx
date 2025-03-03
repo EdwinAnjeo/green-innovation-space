@@ -65,7 +65,7 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
             handleScrollRight();
           }
         }
-      }, 5000); // Scroll every 5 seconds
+      }, 2000); // Scroll every 2 seconds as requested
     };
 
     startAutoScroll();
@@ -97,33 +97,37 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
             handleScrollRight();
           }
         }
-      }, 5000);
+      }, 2000);
     }
   };
 
   return (
     <div className="relative">
-      {/* Navigation Buttons */}
-      <button 
-        onClick={handleScrollLeft}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors -ml-4 md:-ml-6"
-        aria-label="Scroll left"
-      >
-        <ArrowLeft size={20} className="text-atdc-green" />
-      </button>
-      
-      <button 
-        onClick={handleScrollRight}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors -mr-4 md:-mr-6"
-        aria-label="Scroll right"
-      >
-        <ArrowRight size={20} className="text-atdc-green" />
-      </button>
+      {/* Navigation Buttons - only show if showButtons is true */}
+      {showButtons && (
+        <>
+          <button 
+            onClick={handleScrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors -ml-4 md:-ml-6"
+            aria-label="Scroll left"
+          >
+            <ArrowLeft size={20} className="text-atdc-green" />
+          </button>
+          
+          <button 
+            onClick={handleScrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors -mr-4 md:-mr-6"
+            aria-label="Scroll right"
+          >
+            <ArrowRight size={20} className="text-atdc-green" />
+          </button>
+        </>
+      )}
 
       {/* Carousel */}
       <div 
         ref={carouselRef}
-        className="flex overflow-x-auto space-x-6 pb-4 no-scrollbar"
+        className="flex overflow-x-auto space-x-6 pb-4 no-scrollbar animate-carousel"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

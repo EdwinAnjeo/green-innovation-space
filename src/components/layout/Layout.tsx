@@ -17,7 +17,7 @@ const Layout = ({ children, showPartnersCarousel = true }: LayoutProps) => {
         {children}
       </main>
       {showPartnersCarousel && 
-        <section className="bg-white py-12">
+        <section className="bg-white py-12 animate-fade-in">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mb-12 text-center animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Our Partners</h2>
@@ -29,6 +29,25 @@ const Layout = ({ children, showPartnersCarousel = true }: LayoutProps) => {
           </div>
         </section>
       }
+      
+      {/* Coat of Arms Section - Added as requested */}
+      <section className="bg-gray-50 py-10 text-center">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center animate-fade-in">
+            <img 
+              src="/lovable-uploads/7d8b1801-1c96-468a-9000-c7b72f68c9a3.png" 
+              alt="Coat of Arms of Kenya" 
+              className="h-24 md:h-32 mb-4 animate-float"
+            />
+            <p className="text-gray-600 max-w-xl mx-auto text-sm md:text-base">
+              Official Website of Agricultural Engineering Services Directorate
+              <br />
+              Republic of Kenya
+            </p>
+          </div>
+        </div>
+      </section>
+      
       <Footer />
     </div>
   );

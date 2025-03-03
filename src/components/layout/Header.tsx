@@ -40,7 +40,7 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 backdrop-blur-sm shadow-md py-2' 
+          ? 'bg-atdc-green/90 backdrop-blur-sm shadow-md py-2 text-white' 
           : 'bg-transparent py-3'
       }`}
     >
@@ -54,26 +54,26 @@ const Header = () => {
               className="h-10 md:h-12"
             />
             <div>
-              <h1 className="text-atdc-green text-sm md:text-base font-bold leading-tight">
+              <h1 className={`${scrolled ? 'text-white' : 'text-atdc-green'} text-sm md:text-base font-bold leading-tight transition-colors`}>
                 Agriculture Training<br />Development Center
               </h1>
-              <p className="text-xs text-atdc-brown">Ministry of Agriculture | Kenya</p>
+              <p className={`text-xs ${scrolled ? 'text-white/80' : 'text-atdc-brown'} transition-colors`}>Ministry of Agriculture | Kenya</p>
             </div>
           </Link>
 
-          {/* Desktop Navigation - Updated order */}
+          {/* Desktop Navigation - Updated color for scrolled state */}
           <nav className="hidden lg:flex items-center space-x-6">
-            <Link to="/" className={`nav-link text-sm ${location.pathname === '/' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+            <Link to="/" className={`nav-link text-sm ${location.pathname === '/' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
               Home
             </Link>
-            <Link to="/about" className={`nav-link text-sm ${location.pathname === '/about' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+            <Link to="/about" className={`nav-link text-sm ${location.pathname === '/about' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
               About Us
             </Link>
             
             {/* ATDC Stations Dropdown */}
             <div className="relative group">
               <button 
-                className={`flex items-center space-x-1 text-sm ${location.pathname.includes('/stations') ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}
+                className={`flex items-center space-x-1 text-sm ${location.pathname.includes('/stations') ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}
                 onClick={() => setIsStationsOpen(!isStationsOpen)}
               >
                 <span>ATDC Stations</span>
@@ -102,19 +102,19 @@ const Header = () => {
               </div>
             </div>
 
-            <Link to="/partners" className={`nav-link text-sm ${location.pathname === '/partners' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+            <Link to="/partners" className={`nav-link text-sm ${location.pathname === '/partners' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
               Partners
             </Link>
             
-            <Link to="/events" className={`nav-link text-sm ${location.pathname === '/events' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+            <Link to="/events" className={`nav-link text-sm ${location.pathname === '/events' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
               Events
             </Link>
             
-            <Link to="/blog" className={`nav-link text-sm ${location.pathname === '/blog' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+            <Link to="/blog" className={`nav-link text-sm ${location.pathname === '/blog' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
               Blog
             </Link>
             
-            <Link to="/contact" className={`nav-link text-sm ${location.pathname === '/contact' ? 'text-atdc-green font-semibold' : 'text-gray-700 hover:text-atdc-green'} transition-colors`}>
+            <Link to="/contact" className={`nav-link text-sm ${location.pathname === '/contact' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
               Contact Us
             </Link>
             
@@ -130,7 +130,7 @@ const Header = () => {
             className="lg:hidden z-50"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={24} className={scrolled ? "text-white" : ""} /> : <Menu size={24} className={scrolled ? "text-white" : ""} />}
           </button>
         </div>
       </div>

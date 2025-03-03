@@ -85,8 +85,8 @@ const Blog = () => {
                 ))}
               </div>
 
-              <div className="mt-10 flex justify-center">
-                <Button className="bg-atdc-orange hover:bg-atdc-orange/90 mx-auto">
+              <div className="flex justify-center mt-10 animate-pulse-light">
+                <Button className="bg-atdc-orange hover:bg-atdc-orange/90">
                   Load More Articles
                 </Button>
               </div>

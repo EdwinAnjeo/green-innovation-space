@@ -16,7 +16,7 @@ const Partners = () => {
           </p>
         </div>
         
-        <div className="mb-16">
+        <div className="mb-16 animate-fade-in">
           <PartnersCarousel showButtons={true} />
         </div>
         
@@ -49,6 +49,25 @@ const Partners = () => {
               <li>Access to ATDC's network of stations</li>
               <li>Capacity building and training programs</li>
             </ul>
+          </div>
+        </div>
+        
+        <Separator className="mb-8 bg-gray-300" />
+        
+        {/* Become a Partner CTA Section - Added back as requested */}
+        <div className="bg-gray-50 rounded-xl p-8 shadow-md mb-16 animate-fade-in animation-delay-400">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-atdc-green mb-6">Become Our Partner</h2>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Join our network of partners and contribute to Kenya's agricultural development. 
+              Together, we can create innovative solutions for sustainable farming and food security.
+            </p>
+            <a 
+              href="mailto:partnerships@atdc.go.ke" 
+              className="inline-block bg-[#CC5500] hover:bg-[#CC5500]/90 text-white px-6 py-3 rounded-md font-medium shadow-md hover-scale"
+            >
+              Contact our Partnership Team
+            </a>
           </div>
         </div>
       </div>
