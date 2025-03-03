@@ -1,18 +1,13 @@
 
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Menu, X } from 'lucide-react';
-import { Button } from "@/components/ui/button";
-
-// Array of ATDC Stations for the dropdown
-const stations = [
-  "Mpeketoni", "Mtwapa", "Nakuru", "Bungoma", "Siakago", 
-  "Bukura", "Ruiru", "Homabay", "Siaya", "Katumani"
-];
+import { useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
+import DesktopNavigation from './DesktopNavigation';
+import MobileMenu from './MobileMenu';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isStationsOpen, setIsStationsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
@@ -33,7 +28,6 @@ const Header = () => {
   // Function to close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
-    setIsStationsOpen(false);
   }, [location]);
 
   return (
@@ -47,83 +41,10 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/7d8b1801-1c96-468a-9000-c7b72f68c9a3.png" 
-              alt="Court of Arms Logo" 
-              className="h-10 md:h-12"
-            />
-            <div>
-              <h1 className={`${scrolled ? 'text-white' : 'text-atdc-green'} text-sm md:text-base font-bold leading-tight transition-colors`}>
-                Agriculture Training<br />Development Center
-              </h1>
-              <p className={`text-xs ${scrolled ? 'text-white/80' : 'text-atdc-brown'} transition-colors`}>Ministry of Agriculture | Kenya</p>
-            </div>
-          </Link>
+          <Logo scrolled={scrolled} />
 
-          {/* Desktop Navigation - Updated color for scrolled state */}
-          <nav className="hidden lg:flex items-center space-x-6">
-            <Link to="/" className={`nav-link text-sm ${location.pathname === '/' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
-              Home
-            </Link>
-            <Link to="/about" className={`nav-link text-sm ${location.pathname === '/about' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
-              About Us
-            </Link>
-            
-            {/* ATDC Stations Dropdown */}
-            <div className="relative group">
-              <button 
-                className={`flex items-center space-x-1 text-sm ${location.pathname.includes('/stations') ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}
-                onClick={() => setIsStationsOpen(!isStationsOpen)}
-              >
-                <span>ATDC Stations</span>
-                <ChevronDown size={14} />
-              </button>
-              
-              <div className="absolute left-0 mt-2 w-64 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white border border-gray-100 py-2 z-50">
-                <div className="max-h-[50vh] overflow-y-auto">
-                  <Link 
-                    to="/stations" 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-atdc-green"
-                  >
-                    All Stations
-                  </Link>
-                  <hr className="my-1 border-gray-100" />
-                  {stations.map((station) => (
-                    <Link 
-                      key={station}
-                      to={`/stations/${station.toLowerCase()}`}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-atdc-green"
-                    >
-                      ATDC {station}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <Link to="/partners" className={`nav-link text-sm ${location.pathname === '/partners' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
-              Partners
-            </Link>
-            
-            <Link to="/events" className={`nav-link text-sm ${location.pathname === '/events' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
-              Events
-            </Link>
-            
-            <Link to="/blog" className={`nav-link text-sm ${location.pathname === '/blog' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
-              Blog
-            </Link>
-            
-            <Link to="/contact" className={`nav-link text-sm ${location.pathname === '/contact' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
-              Contact Us
-            </Link>
-            
-            <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90 text-sm px-3 py-1 h-auto">
-              <Link to="/login">
-                Staff Portal
-              </Link>
-            </Button>
-          </nav>
+          {/* Desktop Navigation */}
+          <DesktopNavigation scrolled={scrolled} />
 
           {/* Mobile Menu Button */}
           <button 
@@ -135,105 +56,8 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu - Updated order */}
-      <div 
-        className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        } lg:hidden`}
-      >
-        <div className="flex flex-col h-full pt-24 px-8 pb-6 overflow-y-auto">
-          <Link 
-            to="/"
-            className="py-3 text-base border-b border-gray-100"
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </Link>
-          <Link 
-            to="/about"
-            className="py-3 text-base border-b border-gray-100"
-            onClick={() => setIsOpen(false)}
-          >
-            About Us
-          </Link>
-          
-          {/* Mobile ATDC Stations Dropdown */}
-          <div className="py-3 border-b border-gray-100">
-            <button 
-              className="flex items-center justify-between w-full text-base"
-              onClick={() => setIsStationsOpen(!isStationsOpen)}
-            >
-              <span>ATDC Stations</span>
-              <ChevronDown 
-                size={20} 
-                className={`transform transition-transform ${isStationsOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-            
-            {isStationsOpen && (
-              <div className="mt-2 ml-4 space-y-2">
-                <Link 
-                  to="/stations"
-                  className="block py-2 text-gray-700"
-                  onClick={() => setIsOpen(false)}
-                >
-                  All Stations
-                </Link>
-                {stations.map((station) => (
-                  <Link 
-                    key={station}
-                    to={`/stations/${station.toLowerCase()}`}
-                    className="block py-2 text-gray-700"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    ATDC {station}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-          
-          <Link 
-            to="/partners"
-            className="py-3 text-base border-b border-gray-100"
-            onClick={() => setIsOpen(false)}
-          >
-            Partners
-          </Link>
-          
-          <Link 
-            to="/events"
-            className="py-3 text-base border-b border-gray-100"
-            onClick={() => setIsOpen(false)}
-          >
-            Events
-          </Link>
-          
-          <Link 
-            to="/blog"
-            className="py-3 text-base border-b border-gray-100"
-            onClick={() => setIsOpen(false)}
-          >
-            Blog
-          </Link>
-          
-          <Link 
-            to="/contact"
-            className="py-3 text-base border-b border-gray-100"
-            onClick={() => setIsOpen(false)}
-          >
-            Contact Us
-          </Link>
-          
-          <div className="mt-auto">
-            <Button asChild className="w-full bg-atdc-orange hover:bg-atdc-orange/90">
-              <Link to="/login" onClick={() => setIsOpen(false)}>
-                Staff Portal
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
+      {/* Mobile Navigation Menu */}
+      <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </header>
   );
 };
