@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { MailIcon, PhoneIcon, MapPinIcon, ClockIcon } from "lucide-react";
+import MapComponent from "@/components/shared/MapComponent";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +41,7 @@ const Contact = () => {
 
   return (
     <Layout>
-      <div className="py-12 container mx-auto px-4 md:px-6">
+      <div className="py-12 container mx-auto px-4 md:px-6 pt-28">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h1 className="text-4xl font-bold text-atdc-green mb-4">Contact Us</h1>
           <p className="text-gray-600">
@@ -52,7 +53,7 @@ const Contact = () => {
         <Separator className="mb-8 bg-gray-300" />
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div>
+          <div className="bg-atdc-green/10 p-6 rounded-lg">
             <h2 className="text-2xl font-bold text-atdc-green mb-6">Get in Touch</h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -123,15 +124,27 @@ const Contact = () => {
                 Send Message
               </Button>
             </form>
+
+            <div className="mt-8 bg-white p-6 rounded-lg text-center">
+              <h3 className="font-bold text-atdc-green mb-2">Visit Our Stations</h3>
+              <p className="text-gray-600 mb-4">
+                We have 10 stations across Kenya. Find the one nearest to you to learn more about our services.
+              </p>
+              <div className="flex justify-center">
+                <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
+                  <a href="/stations">View Stations</a>
+                </Button>
+              </div>
+            </div>
           </div>
           
-          <div>
-            <h2 className="text-2xl font-bold text-atdc-green mb-6">Contact Information</h2>
+          <div className="bg-[#CC5500]/10 p-6 rounded-lg">
+            <h2 className="text-2xl font-bold text-[#CC5500] mb-6">Contact Information</h2>
             
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
-                  <MailIcon className="text-atdc-green" />
+                <div className="bg-[#CC5500]/10 p-3 rounded-full mr-4">
+                  <MailIcon className="text-[#CC5500]" />
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Email</h3>
@@ -141,8 +154,8 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
-                  <PhoneIcon className="text-atdc-green" />
+                <div className="bg-[#CC5500]/10 p-3 rounded-full mr-4">
+                  <PhoneIcon className="text-[#CC5500]" />
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Phone</h3>
@@ -152,8 +165,8 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
-                  <MapPinIcon className="text-atdc-green" />
+                <div className="bg-[#CC5500]/10 p-3 rounded-full mr-4">
+                  <MapPinIcon className="text-[#CC5500]" />
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Headquarters</h3>
@@ -163,8 +176,8 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
-                  <ClockIcon className="text-atdc-green" />
+                <div className="bg-[#CC5500]/10 p-3 rounded-full mr-4">
+                  <ClockIcon className="text-[#CC5500]" />
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Working Hours</h3>
@@ -173,23 +186,11 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="mt-8 bg-gray-100 p-6 rounded-lg">
-              <h3 className="font-bold text-atdc-green mb-2">Visit Our Stations</h3>
-              <p className="text-gray-600 mb-4">
-                We have 10 stations across Kenya. Find the one nearest to you to learn more about our services.
-              </p>
-              <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
-                <a href="/stations">View Stations</a>
-              </Button>
-            </div>
           </div>
         </div>
         
-        {/* Map placeholder - in a real application, you would integrate Google Maps or similar */}
-        <div className="bg-gray-200 rounded-lg h-[400px] flex items-center justify-center mb-12">
-          <p className="text-gray-500">Map would be displayed here</p>
-        </div>
+        {/* Map */}
+        <MapComponent />
       </div>
     </Layout>
   );

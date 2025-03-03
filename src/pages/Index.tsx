@@ -14,8 +14,10 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <HeroSection
-        title="Empowering Kenya's Agricultural Future"
-        description="The Agriculture Training Development Center is dedicated to transforming agriculture through training, innovation, and sustainable practices."
+        title="Agricultural Engineering Services Directorate"
+        subtitle="State Department for Crops Development & Agriculture Research"
+        description={<em>Empowering Kenya's Agricultural Future</em>}
+        buttonColor="orange"
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button asChild size="lg" className="bg-atdc-green hover:bg-atdc-green/90">
@@ -23,7 +25,7 @@ const Index = () => {
               Learn More <ArrowRight size={16} className="ml-2" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/30">
+          <Button asChild size="lg" variant="outline" className="bg-[#CC5500] hover:bg-[#CC5500]/90 text-white border-[#CC5500]/30">
             <Link to="/contact">
               Contact Us
             </Link>
@@ -49,7 +51,7 @@ const Index = () => {
       <Separator className="h-1 bg-gray-200" />
 
       {/* Core Mandate Section */}
-      <section className="py-20 bg-[#0EA5E9]/10">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-6">Our Core Mandate</h2>
@@ -116,7 +118,7 @@ const Index = () => {
               <div className="relative">
                 <div className="rounded-xl overflow-hidden shadow-xl animation-float">
                   <img 
-                    src="/lovable-uploads/87a057d4-92b9-4e7e-af58-ff17b236dead.png" 
+                    src="/lovable-uploads/393e137b-15c5-489d-8930-b1bbe97f47a9.png" 
                     alt="ATDC Tractor" 
                     className="w-full h-auto"
                   />
@@ -128,7 +130,7 @@ const Index = () => {
           </div>
           
           <div className="flex justify-center mt-10">
-            <Button asChild className="bg-[#F97316] hover:bg-[#F97316]/90">
+            <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
               <Link to="/about">
                 Read More About Us
               </Link>
@@ -144,8 +146,19 @@ const Index = () => {
       
       <Separator className="h-1 bg-gray-200" />
       
-      {/* Partners Section */}
-      <PartnersCarousel />
+      {/* Partners Section - Only one instance */}
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Our Partners</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We collaborate with various organizations to promote agricultural development across Kenya.
+            </p>
+          </div>
+          
+          <PartnersCarousel linkToPartners={true} />
+        </div>
+      </section>
     </Layout>
   );
 };

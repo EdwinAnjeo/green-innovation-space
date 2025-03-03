@@ -53,6 +53,7 @@
     --atdc-soft-green: 90 70% 95%; /* #F2FCE2 */
     --atdc-gray: 217 4% 57%;     /* #8E9196 */
     --atdc-soft-bg: 248 92% 97%; /* #F1F0FB */
+    --burnt-orange: 25 94% 53%;  /* #F97316 / #CC5500 */
   }
 
   .dark {
@@ -125,6 +126,16 @@
   .text-gradient {
     @apply bg-gradient-to-r from-atdc-green to-atdc-blue bg-clip-text text-transparent;
   }
+  
+  .footer-with-coat-of-arms {
+    @apply relative;
+  }
+  
+  .footer-with-coat-of-arms::before {
+    content: '';
+    @apply absolute bottom-0 right-4 w-20 h-20 bg-contain bg-no-repeat bg-center opacity-50;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Coat_of_arms_of_Kenya_%28Official%29.svg/800px-Coat_of_arms_of_Kenya_%28Official%29.svg.png');
+  }
 }
 
 html {
@@ -138,3 +149,23 @@ html {
   overflow-x: hidden;
 }
 
+/* Add custom styles for the Kenya coat of arms in the footer */
+.coat-of-arms {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Coat_of_arms_of_Kenya_%28Official%29.svg/800px-Coat_of_arms_of_Kenya_%28Official%29.svg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 80px;
+  height: 80px;
+  opacity: 0.8;
+}
+
+/* Hide scrollbars for the carousel but maintain functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -2,7 +2,6 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 
 const StationPreview = () => {
   const allStations = [
@@ -20,46 +19,8 @@ const StationPreview = () => {
       name: "ATDC Nakuru",
       image: "/lovable-uploads/779c56b6-c1af-4e6c-bb82-25559402520c.png",
       description: "Agricultural innovation and technology transfer."
-    },
-    {
-      name: "ATDC Bungoma",
-      image: "/lovable-uploads/6e0f94ff-4fa7-4701-bc2d-69b0182f64ba.png",
-      description: "Western region agriculture and technology development."
-    },
-    {
-      name: "ATDC Siakago",
-      image: "/lovable-uploads/0dec4fcd-07ca-4057-9198-a6e5b1961d49.png",
-      description: "Eastern region agricultural training and development."
-    },
-    {
-      name: "ATDC Bukura",
-      image: "/lovable-uploads/25322486-92b7-45ea-837c-4360c9f718fc.png",
-      description: "Specialized in agricultural mechanization and training."
-    },
-    {
-      name: "ATDC Ruiru",
-      image: "/lovable-uploads/237d93b7-93f1-44f9-9c4b-94e1268412a8.png",
-      description: "Central region agricultural training center."
-    },
-    {
-      name: "ATDC Homabay",
-      image: "/lovable-uploads/2a47bab3-fc95-46fb-a1e8-335b55df074b.png",
-      description: "Nyanza region agricultural development and support."
-    },
-    {
-      name: "ATDC Siaya",
-      image: "/lovable-uploads/d0c15681-662b-4837-a17c-4178efc8f433.png",
-      description: "Focus on sustainable farming and agricultural technologies."
-    },
-    {
-      name: "ATDC Katumani",
-      image: "/lovable-uploads/2a47bab3-fc95-46fb-a1e8-335b55df074b.png",
-      description: "Specializing in arid and semi-arid land agriculture."
     }
   ];
-  
-  // Display only 3 stations on the homepage
-  const previewStations = allStations.slice(0, 3);
   
   return (
     <section className="bg-[#F2FCE2] py-16">
@@ -73,7 +34,7 @@ const StationPreview = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {previewStations.map((station, index) => (
+          {allStations.map((station, index) => (
             <div
               key={index}
               className="bg-white rounded-xl overflow-hidden shadow-md hover-scale h-full flex flex-col"
@@ -103,7 +64,7 @@ const StationPreview = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Button asChild className="bg-[#F97316] hover:bg-[#F97316]/90">
+          <Button asChild className="bg-[#CC5500] hover:bg-[#CC5500]/90">
             <Link to="/stations">
               View All Stations <ArrowRight size={16} className="ml-2" />
             </Link>

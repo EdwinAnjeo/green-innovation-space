@@ -1,12 +1,11 @@
-
 import Layout from '@/components/layout/Layout';
-import HeroSection from '@/components/shared/HeroSection';
 import StatsGrid from '@/components/shared/StatsGrid';
 import StationPreview from '@/components/shared/StationPreview';
 import { CheckCircle2 } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
 
 const AboutPage = () => {
-  // Array of leadership team members
+  // Only keep two leadership team members
   const leadershipTeam = [
     {
       name: "Dr. James Mwangi",
@@ -19,18 +18,6 @@ const AboutPage = () => {
       position: "Deputy Director, Administration",
       image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
       bio: "Ms. Waithaka oversees administrative functions and human resource development across all ATDC centers."
-    },
-    {
-      name: "Mr. Daniel Otieno",
-      position: "Deputy Director, Technical Services",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      bio: "Mr. Otieno leads innovation in agricultural training methodologies and technical capacity building."
-    },
-    {
-      name: "Dr. Sarah Kiplangat",
-      position: "Head, Quality Assurance",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      bio: "Dr. Kiplangat ensures high standards in all training programs and curriculum development."
     }
   ];
 
@@ -70,15 +57,8 @@ const AboutPage = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <HeroSection
-        title="About ATDC"
-        description="Learn about our mission, history, and commitment to agricultural development in Kenya."
-        bgImage="https://images.unsplash.com/photo-1595004926844-5d25571a30b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
-      />
-
       {/* What is ATDC Section */}
-      <section className="py-20">
+      <section className="py-20 pt-32">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -92,8 +72,9 @@ const AboutPage = () => {
                 opportunities of their respective regions. Our centers serve as hubs for innovation, learning, and community development.
               </p>
               <p className="text-gray-600 mb-6">
-                Through collaboration with local and international partners, ATDC provides cutting-edge training programs, 
-                research opportunities, and extension services to farmers, agricultural professionals, and rural communities.
+                <strong>Core Mandate:</strong> Our primary mandate is to build capacity in Kenya's agricultural sector through practical training, 
+                technology demonstration, and providing mechanization services to farmers. We aim to enhance agricultural productivity 
+                through modern farming techniques and appropriate technologies while supporting sustainable agriculture.
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -125,11 +106,11 @@ const AboutPage = () => {
             </div>
             
             <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-lg">
+              <div className="rounded-2xl overflow-hidden shadow-lg h-[400px]">
                 <img 
                   src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                   alt="Farmers in training session" 
-                  className="w-full h-auto"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-atdc-blue/20 rounded-full blur-3xl"></div>
@@ -139,8 +120,10 @@ const AboutPage = () => {
         </div>
       </section>
       
+      <Separator className="h-1 bg-gray-200" />
+      
       {/* History Timeline Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-atdc-green/10">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Our History</h2>
@@ -149,7 +132,7 @@ const AboutPage = () => {
             </p>
           </div>
           
-          <div className="relative">
+          <div className="relative max-w-5xl mx-auto">
             {/* Timeline Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-atdc-green/20"></div>
             
@@ -178,6 +161,8 @@ const AboutPage = () => {
         </div>
       </section>
       
+      <Separator className="h-1 bg-gray-200" />
+      
       {/* Leadership Team Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 md:px-6">
@@ -188,7 +173,7 @@ const AboutPage = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {leadershipTeam.map((member, index) => (
               <div 
                 key={index}
@@ -212,6 +197,8 @@ const AboutPage = () => {
         </div>
       </section>
       
+      <Separator className="h-1 bg-gray-200" />
+      
       {/* Stats Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
@@ -226,8 +213,28 @@ const AboutPage = () => {
         </div>
       </section>
       
-      {/* ATDC Stations Preview */}
-      <StationPreview />
+      <Separator className="h-1 bg-gray-200" />
+      
+      {/* ATDC Stations Preview with updated title */}
+      <section className="bg-[#F2FCE2] py-16">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Visit any of Our ATDC Stations in Kenya</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore our network of Agricultural Training and Development Centers spread across Kenya, 
+              each specializing in region-specific agricultural practices.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {StationPreview().props.children.props.children[1]}
+          </div>
+          
+          <div className="text-center mt-12">
+            {StationPreview().props.children.props.children[2]}
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };
