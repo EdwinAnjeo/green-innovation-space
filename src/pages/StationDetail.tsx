@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
-import { Phone, Mail, Users, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Phone, Mail, Users, CheckCircle2, ArrowRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-// Updated station data with correct images
 const stationsData = {
   "mpeketoni": {
     name: "ATDC Mpeketoni",
@@ -46,6 +46,26 @@ const stationsData = {
         title: "Tilapia Farming Transformation",
         image: "https://images.unsplash.com/photo-1594224664126-ae14e49be679?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         story: "A group of youth from Kwale County received training in sustainable tilapia farming. With initial support from Mombasa ATDC, they established a successful aquaculture enterprise that now supplies restaurants across the coast region and provides employment for 15 young people."
+      },
+      {
+        title: "Drought-Resistant Crops Program",
+        image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        story: "Working with small-scale farmers in drought-prone areas, we introduced drought-resistant crop varieties that have increased food security for over 200 families even during extended dry periods."
+      },
+      {
+        title: "Women's Agricultural Cooperative",
+        image: "https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        story: "Through our training and support programs, a women's agricultural cooperative has grown from 15 to 75 members, creating sustainable livelihoods and improving nutrition in their community."
+      },
+      {
+        title: "Youth in Agriculture Initiative",
+        image: "https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        story: "Our specialized youth program has trained over 100 young people in modern farming techniques, with 60% of graduates now running their own agricultural enterprises."
+      },
+      {
+        title: "Sustainable Irrigation Project",
+        image: "https://images.unsplash.com/photo-1591105577035-4c8c55d0f6ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        story: "Implementation of water-efficient irrigation systems has helped farmers reduce water usage by 40% while increasing crop yields by 25%, creating a more sustainable approach to farming in water-scarce regions."
       }
     ]
   },
@@ -403,7 +423,6 @@ const stationsData = {
   }
 };
 
-// Fallback data for any station not specifically defined
 const defaultStation = {
   name: "ATDC Station",
   image: "https://images.unsplash.com/photo-1506184169200-67f9a6593556?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
@@ -445,16 +464,27 @@ const defaultStation = {
 
 const StationDetail = () => {
   const { stationId } = useParams<{ stationId: string }>();
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   
-  // Get station data or use default if not found
   const station = stationsData[stationId as keyof typeof stationsData] || {
     ...defaultStation,
     name: `${stationId?.charAt(0).toUpperCase()}${stationId?.slice(1)} ATDC`
   };
 
+  const nextStory = () => {
+    setCurrentStoryIndex((prevIndex) => 
+      prevIndex === station.successStories.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevStory = () => {
+    setCurrentStoryIndex((prevIndex) => 
+      prevIndex === 0 ? station.successStories.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
     <Layout>
-      {/* Hero Section with Station Image */}
       <div 
         className="relative h-[50vh] md:h-[60vh]"
         style={{
@@ -475,13 +505,12 @@ const StationDetail = () => {
         </div>
       </div>
       
-      {/* Contact Info Card */}
       <div className="container mx-auto px-4 md:px-6">
         <div className="bg-white shadow-lg rounded-xl p-6 md:p-8 -mt-12 md:-mt-16 relative z-10 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex items-center">
-              <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
-                <Mail size={24} className="text-atdc-green" />
+              <div className="bg-atdc-green p-3 rounded-full mr-4">
+                <Mail size={24} className="text-white" />
               </div>
               <div>
                 <p className="text-sm text-gray-500">Email</p>
@@ -492,8 +521,8 @@ const StationDetail = () => {
             </div>
             
             <div className="flex items-center">
-              <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
-                <Phone size={24} className="text-atdc-green" />
+              <div className="bg-atdc-green p-3 rounded-full mr-4">
+                <Phone size={24} className="text-white" />
               </div>
               <div>
                 <p className="text-sm text-gray-500">Phone</p>
@@ -504,8 +533,8 @@ const StationDetail = () => {
             </div>
             
             <div className="flex items-center">
-              <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
-                <Users size={24} className="text-atdc-green" />
+              <div className="bg-atdc-green p-3 rounded-full mr-4">
+                <Users size={24} className="text-white" />
               </div>
               <div>
                 <p className="text-sm text-gray-500">Staff</p>
@@ -516,7 +545,6 @@ const StationDetail = () => {
         </div>
       </div>
       
-      {/* Center Engineer Section */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -535,20 +563,19 @@ const StationDetail = () => {
               </div>
             </div>
             
-            <div className="lg:col-span-2 flex items-center">
-              <div>
-                <h2 className="text-3xl font-bold text-atdc-green mb-6">Engineer's Comment</h2>
-                <div className="relative">
-                  <div className="absolute -top-4 -left-4 text-6xl text-atdc-green opacity-20">"</div>
-                  <p className="text-xl text-gray-600 italic relative z-10 mb-8">
-                    {station.engineer.comment}
-                  </p>
-                  <div className="absolute -bottom-4 -right-4 text-6xl text-atdc-green opacity-20">"</div>
-                </div>
-                
+            <div className="lg:col-span-2 flex flex-col justify-center">
+              <div className="relative mb-8 p-8 bg-white rounded-xl shadow-md">
+                <Quote size={48} className="absolute top-4 left-4 text-atdc-green/20" />
+                <Quote size={48} className="absolute bottom-4 right-4 text-atdc-green/20 rotate-180" />
+                <p className="text-xl text-gray-600 italic relative z-10 px-8">
+                  {station.engineer.comment}
+                </p>
+              </div>
+              
+              <div className="flex justify-center">
                 <Button asChild className="mt-4 bg-atdc-green hover:bg-atdc-green/90">
                   <Link to="/contact">
-                    Contact Us
+                    Get in Touch
                   </Link>
                 </Button>
               </div>
@@ -557,7 +584,6 @@ const StationDetail = () => {
         </div>
       </section>
       
-      {/* Staff Establishment Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
@@ -581,11 +607,10 @@ const StationDetail = () => {
         </div>
       </section>
       
-      {/* Functions Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#CC5500]/10">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-atdc-green mb-4">Functions of the Center</h2>
+            <h2 className="text-3xl font-bold text-[#CC5500] mb-4">Functions of the Center</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Key activities and services provided by {station.name} to support agricultural development.
             </p>
@@ -599,8 +624,8 @@ const StationDetail = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="mr-4">
-                  <div className="bg-atdc-green/10 p-3 rounded-full">
-                    <CheckCircle2 size={24} className="text-atdc-green" />
+                  <div className="bg-[#CC5500]/10 p-3 rounded-full">
+                    <CheckCircle2 size={24} className="text-[#CC5500]" />
                   </div>
                 </div>
                 <p className="text-gray-700">{item}</p>
@@ -610,7 +635,6 @@ const StationDetail = () => {
         </div>
       </section>
       
-      {/* Success Stories */}
       <section className="py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
@@ -620,35 +644,60 @@ const StationDetail = () => {
             </p>
           </div>
           
-          <div className="space-y-12">
-            {station.successStories.map((story, index) => (
-              <div 
-                key={index}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 0 ? '' : 'lg:grid-flow-dense'
-                }`}
-              >
-                <div className={index % 2 === 0 ? 'order-2 lg:order-1' : 'order-2'}>
-                  <h3 className="text-2xl font-bold mb-4">{story.title}</h3>
-                  <p className="text-gray-600 mb-6">
-                    {story.story}
-                  </p>
-                  <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
-                    <Link to="/contact">
-                      Learn More <ArrowRight size={16} className="ml-2" />
-                    </Link>
-                  </Button>
-                </div>
-                
-                <div className={index % 2 === 0 ? 'order-1 lg:order-2' : 'order-1'}>
+          <div className="relative max-w-5xl mx-auto">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden animate-fade-in">
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="h-full">
                   <img 
-                    src={story.image} 
-                    alt={story.title} 
-                    className="w-full h-auto rounded-xl shadow-lg"
+                    src={station.successStories[currentStoryIndex].image} 
+                    alt={station.successStories[currentStoryIndex].title} 
+                    className="w-full h-full object-cover"
                   />
                 </div>
+                <div className="p-6 md:p-10 flex flex-col justify-center">
+                  <span className="inline-block px-3 py-1 text-sm font-semibold bg-atdc-green/10 text-atdc-green rounded-full mb-4">
+                    Success Story {currentStoryIndex + 1} of {station.successStories.length}
+                  </span>
+                  <h3 className="text-2xl font-bold mb-4">{station.successStories[currentStoryIndex].title}</h3>
+                  <p className="text-gray-600 mb-6">
+                    {station.successStories[currentStoryIndex].story}
+                  </p>
+                </div>
               </div>
-            ))}
+            </div>
+            
+            <div className="flex justify-center space-x-4 mt-8">
+              <Button 
+                onClick={prevStory} 
+                variant="outline" 
+                className="rounded-full p-3"
+                aria-label="Previous story"
+              >
+                <ArrowRight className="rotate-180" size={18} />
+              </Button>
+              
+              <div className="flex items-center space-x-2">
+                {station.successStories.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentStoryIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      index === currentStoryIndex ? 'bg-atdc-green' : 'bg-gray-300'
+                    }`}
+                    aria-label={`Go to story ${index + 1}`}
+                  />
+                ))}
+              </div>
+              
+              <Button 
+                onClick={nextStory} 
+                variant="outline" 
+                className="rounded-full p-3"
+                aria-label="Next story"
+              >
+                <ArrowRight size={18} />
+              </Button>
+            </div>
           </div>
         </div>
       </section>

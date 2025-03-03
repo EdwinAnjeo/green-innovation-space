@@ -14,10 +14,10 @@ const Logo = ({ scrolled }: LogoProps) => {
         className="h-10 md:h-12"
       />
       <div>
-        <h1 className={`${scrolled ? 'text-white' : 'text-atdc-green'} text-sm md:text-base font-bold leading-tight transition-colors`}>
+        <h1 className="text-white text-sm md:text-base font-bold leading-tight transition-colors">
           Agriculture Training<br />Development Center
         </h1>
-        <p className={`text-xs ${scrolled ? 'text-white/80' : 'text-atdc-brown'} transition-colors`}>Ministry of Agriculture | Kenya</p>
+        <p className="text-white/80 text-xs transition-colors">Ministry of Agriculture | Kenya</p>
       </div>
     </Link>
   );

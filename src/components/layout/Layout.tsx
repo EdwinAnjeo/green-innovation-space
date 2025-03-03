@@ -30,7 +30,7 @@ const Layout = ({ children, showPartnersCarousel = true }: LayoutProps) => {
         </section>
       }
       
-      {/* Coat of Arms Section - Added as requested */}
+      {/* Coat of Arms Section - Updated text to Agriculture Training Development Center */}
       <section className="bg-gray-50 py-10 text-center">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-center animate-fade-in">
@@ -40,7 +40,7 @@ const Layout = ({ children, showPartnersCarousel = true }: LayoutProps) => {
               className="h-24 md:h-32 mb-4 animate-float"
             />
             <p className="text-gray-600 max-w-xl mx-auto text-sm md:text-base">
-              Official Website of Agricultural Engineering Services Directorate
+              Official Website of Agriculture Training Development Center
               <br />
               Republic of Kenya
             </p>

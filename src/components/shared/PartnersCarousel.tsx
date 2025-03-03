@@ -53,7 +53,7 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
     }
   };
   
-  // Auto scroll function
+  // Auto scroll function - updated to move from right to left with 1s delay
   useEffect(() => {
     const startAutoScroll = () => {
       autoScrollInterval.current = setInterval(() => {
@@ -62,19 +62,23 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
           if (carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth) {
             carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
-            handleScrollRight();
+            handleScrollLeft(); // Changed to scroll left instead of right
           }
         }
-      }, 2000); // Scroll every 2 seconds as requested
+      }, 1000); // Changed to 1 second as requested
     };
 
-    startAutoScroll();
+    // Initial delay before starting the auto-scroll
+    const initialDelay = setTimeout(() => {
+      startAutoScroll();
+    }, 1000); // Wait 1 second before starting
 
-    // Clean up interval on unmount
+    // Clean up interval and timeout on unmount
     return () => {
       if (autoScrollInterval.current) {
         clearInterval(autoScrollInterval.current);
       }
+      clearTimeout(initialDelay);
     };
   }, []);
 
@@ -86,7 +90,7 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
     }
   };
 
-  // Resume auto-scroll when mouse leaves
+  // Resume auto-scroll when mouse leaves - updated to move from right to left
   const handleMouseLeave = () => {
     if (!autoScrollInterval.current) {
       autoScrollInterval.current = setInterval(() => {
@@ -94,10 +98,10 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
           if (carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth) {
             carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
-            handleScrollRight();
+            handleScrollLeft(); // Changed to scroll left instead of right
           }
         }
-      }, 2000);
+      }, 1000); // Changed to 1 second
     }
   };
 

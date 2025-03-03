@@ -1,8 +1,9 @@
 import Layout from '@/components/layout/Layout';
 import StatsGrid from '@/components/shared/StatsGrid';
-import StationPreview from '@/components/shared/StationPreview';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
   // Only keep two leadership team members
@@ -52,6 +53,31 @@ const AboutPage = () => {
       year: "Present",
       title: "Sustainable Agriculture Focus",
       description: "Current focus on climate-smart agriculture, food security, and sustainable farming practices."
+    }
+  ];
+
+  // Station data for the stations section
+  const stationsData = [
+    {
+      id: "mpeketoni",
+      name: "ATDC Mpeketoni",
+      region: "Coast",
+      specialization: "Coastal Agriculture, Fisheries",
+      image: "/lovable-uploads/ad276c5e-d66b-428d-bc21-c665d0afe25c.png"
+    },
+    {
+      id: "mtwapa",
+      name: "ATDC Mtwapa",
+      region: "Coast",
+      specialization: "Coastal agricultural research and development",
+      image: "/lovable-uploads/110e6d67-493c-4314-bce6-0d3ad2358ce8.png"
+    },
+    {
+      id: "nakuru",
+      name: "ATDC Nakuru",
+      region: "Rift Valley",
+      specialization: "Agricultural innovation and technology transfer",
+      image: "/lovable-uploads/779c56b6-c1af-4e6c-bb82-25559402520c.png"
     }
   ];
 
@@ -215,7 +241,7 @@ const AboutPage = () => {
       
       <Separator className="h-1 bg-gray-200" />
       
-      {/* ATDC Stations Preview with updated title */}
+      {/* ATDC Stations Preview - Updated to match home page style */}
       <section className="bg-[#F2FCE2] py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
@@ -227,11 +253,39 @@ const AboutPage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {StationPreview().props.children.props.children[1]}
+            {stationsData.map((station, index) => (
+              <Link 
+                key={station.id}
+                to={`/stations/${station.id}`}
+                className="bg-white rounded-xl overflow-hidden shadow-md hover-scale animate-fade-in"
+                style={{animationDelay: `${index * 200}ms`}}
+              >
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={station.image} 
+                    alt={station.name} 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="inline-block px-3 py-1 text-xs font-semibold bg-atdc-green/10 text-atdc-green rounded-full mb-3">
+                    {station.region}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{station.name}</h3>
+                  <p className="text-gray-600">
+                    <span className="font-medium">Specialization:</span> {station.specialization}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
           
           <div className="text-center mt-12">
-            {StationPreview().props.children.props.children[2]}
+            <Button asChild className="bg-[#CC5500] hover:bg-[#CC5500]/90 animate-pulse">
+              <Link to="/stations">
+                View All Stations <ArrowRight size={16} className="ml-2" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
