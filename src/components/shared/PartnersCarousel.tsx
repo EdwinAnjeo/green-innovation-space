@@ -1,5 +1,5 @@
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -33,11 +33,13 @@ const partners = [
 
 interface PartnersCarouselProps {
   linkToPartners?: boolean;
+  showButtons?: boolean;
 }
 
-const PartnersCarousel = ({ linkToPartners = false }: PartnersCarouselProps) => {
+const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: PartnersCarouselProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const scrollAmount = 300;
+  const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
 
   const handleScrollLeft = () => {
     if (carouselRef.current) {
@@ -48,6 +50,54 @@ const PartnersCarousel = ({ linkToPartners = false }: PartnersCarouselProps) => 
   const handleScrollRight = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+  
+  // Auto scroll function
+  useEffect(() => {
+    const startAutoScroll = () => {
+      autoScrollInterval.current = setInterval(() => {
+        if (carouselRef.current) {
+          // Check if we're at the end, if so, scroll back to start
+          if (carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth) {
+            carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            handleScrollRight();
+          }
+        }
+      }, 5000); // Scroll every 5 seconds
+    };
+
+    startAutoScroll();
+
+    // Clean up interval on unmount
+    return () => {
+      if (autoScrollInterval.current) {
+        clearInterval(autoScrollInterval.current);
+      }
+    };
+  }, []);
+
+  // Pause auto-scroll on hover
+  const handleMouseEnter = () => {
+    if (autoScrollInterval.current) {
+      clearInterval(autoScrollInterval.current);
+      autoScrollInterval.current = null;
+    }
+  };
+
+  // Resume auto-scroll when mouse leaves
+  const handleMouseLeave = () => {
+    if (!autoScrollInterval.current) {
+      autoScrollInterval.current = setInterval(() => {
+        if (carouselRef.current) {
+          if (carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth) {
+            carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            handleScrollRight();
+          }
+        }
+      }, 5000);
     }
   };
 
@@ -75,18 +125,21 @@ const PartnersCarousel = ({ linkToPartners = false }: PartnersCarouselProps) => 
         ref={carouselRef}
         className="flex overflow-x-auto space-x-6 pb-4 no-scrollbar"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {partners.map((partner, index) => (
           <div 
             key={index}
-            className="flex-shrink-0 w-[300px] bg-white rounded-xl shadow-md overflow-hidden card-hover"
+            className="flex-shrink-0 w-[300px] bg-white rounded-xl shadow-md overflow-hidden card-hover animate-fade-in"
+            style={{ animationDelay: `${index * 100}ms` }}
           >
             {linkToPartners ? (
               <Link to="/partners" className="h-40 flex items-center justify-center p-6 bg-white">
                 <img 
                   src={partner.logo} 
                   alt={partner.name} 
-                  className="max-h-full max-w-full object-contain"
+                  className="max-h-full max-w-full object-contain hover-scale"
                 />
               </Link>
             ) : (
@@ -101,14 +154,16 @@ const PartnersCarousel = ({ linkToPartners = false }: PartnersCarouselProps) => 
             <div className="p-6 border-t">
               <h3 className="font-bold text-lg mb-2 line-clamp-2">{partner.name}</h3>
               <p className="text-gray-600 text-sm mb-4">{partner.description}</p>
-              <a 
-                href={partner.website} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-[#CC5500] hover:bg-[#CC5500]/90 text-white px-4 py-2 rounded-md text-sm font-medium"
-              >
-                Learn More
-              </a>
+              {showButtons && (
+                <a 
+                  href={partner.website} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block bg-[#CC5500] hover:bg-[#CC5500]/90 text-white px-4 py-2 rounded-md text-sm font-medium"
+                >
+                  Learn More
+                </a>
+              )}
             </div>
           </div>
         ))}

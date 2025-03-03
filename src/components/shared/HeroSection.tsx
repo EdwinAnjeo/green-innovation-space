@@ -42,12 +42,14 @@ const HeroSection = ({
           )}
           
           {description && (
-            <div className="text-xl md:text-2xl text-white/90 mb-8 animate-fade-in animation-delay-200">
+            <div className="text-xl md:text-2xl text-white/90 mb-8 animate-fade-in animation-delay-300">
               {description}
             </div>
           )}
           
-          {children}
+          <div className="animate-fade-in animation-delay-400">
+            {children}
+          </div>
         </div>
       </div>
     </section>

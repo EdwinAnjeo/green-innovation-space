@@ -3,7 +3,6 @@ import Layout from '@/components/layout/Layout';
 import HeroSection from '@/components/shared/HeroSection';
 import StatsGrid from '@/components/shared/StatsGrid';
 import StationPreview from '@/components/shared/StationPreview';
-import PartnersCarousel from '@/components/shared/PartnersCarousel';
 import { ArrowRight, Tractor, Leaf, Users, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -37,8 +36,8 @@ const Index = () => {
       <section className="py-20 bg-[#F1F0FB]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Our Impact</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4 animate-fade-in">Our Impact</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in animation-delay-200">
               For over 15 years, ATDC has been transforming Kenya's agricultural landscape through training, 
               innovation, and sustainable farming practices.
             </p>
@@ -54,8 +53,8 @@ const Index = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-6">Our Core Mandate</h2>
-            <p className="text-gray-600 mb-6 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-6 animate-fade-in">Our Core Mandate</h2>
+            <p className="text-gray-600 mb-6 max-w-3xl mx-auto animate-fade-in animation-delay-200">
               The Agriculture Training Development Center (ATDC) is committed to building capacity 
               in Kenya's agricultural sector through training, technology transfer, and support services.
             </p>
@@ -63,9 +62,9 @@ const Index = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start justify-center">
-                  <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
+              <div className="space-y-6 mb-8">
+                <div className="flex items-start">
+                  <div className="bg-atdc-green/10 p-3 rounded-full mr-4 flex-shrink-0">
                     <Tractor size={24} className="text-atdc-green" />
                   </div>
                   <div>
@@ -76,8 +75,8 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start justify-center">
-                  <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
+                <div className="flex items-start">
+                  <div className="bg-atdc-green/10 p-3 rounded-full mr-4 flex-shrink-0">
                     <Leaf size={24} className="text-atdc-green" />
                   </div>
                   <div>
@@ -88,8 +87,8 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start justify-center">
-                  <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
+                <div className="flex items-start">
+                  <div className="bg-atdc-green/10 p-3 rounded-full mr-4 flex-shrink-0">
                     <Users size={24} className="text-atdc-green" />
                   </div>
                   <div>
@@ -100,8 +99,8 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start justify-center">
-                  <div className="bg-atdc-green/10 p-3 rounded-full mr-4">
+                <div className="flex items-start">
+                  <div className="bg-atdc-green/10 p-3 rounded-full mr-4 flex-shrink-0">
                     <Award size={24} className="text-atdc-green" />
                   </div>
                   <div>
@@ -115,8 +114,8 @@ const Index = () => {
             </div>
             
             <div className="order-1 lg:order-2">
-              <div className="relative">
-                <div className="rounded-xl overflow-hidden shadow-xl animation-float">
+              <div className="relative flex justify-center">
+                <div className="rounded-xl overflow-hidden shadow-xl w-3/4 lg:w-5/6 mx-auto hover-scale animate-fade-in">
                   <img 
                     src="/lovable-uploads/393e137b-15c5-489d-8930-b1bbe97f47a9.png" 
                     alt="ATDC Tractor" 
@@ -130,7 +129,7 @@ const Index = () => {
           </div>
           
           <div className="flex justify-center mt-10">
-            <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
+            <Button asChild className="bg-atdc-green hover:bg-atdc-green/90 animate-pulse">
               <Link to="/about">
                 Read More About Us
               </Link>
@@ -143,22 +142,6 @@ const Index = () => {
 
       {/* ATDC Stations Preview */}
       <StationPreview />
-      
-      <Separator className="h-1 bg-gray-200" />
-      
-      {/* Partners Section - Only one instance */}
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Our Partners</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              We collaborate with various organizations to promote agricultural development across Kenya.
-            </p>
-          </div>
-          
-          <PartnersCarousel linkToPartners={true} />
-        </div>
-      </section>
     </Layout>
   );
 };

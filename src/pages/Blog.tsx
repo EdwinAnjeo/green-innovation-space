@@ -1,6 +1,5 @@
 
 import Layout from '@/components/layout/Layout';
-import HeroSection from '@/components/shared/HeroSection';
 import { Calendar, ArrowRight, Tag, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -39,25 +38,23 @@ const categories = [
 const Blog = () => {
   return (
     <Layout>
-      <HeroSection
-        title="ATDC Blog"
-        description="Insights, updates, and knowledge sharing on agricultural innovation, sustainable practices, and success stories from across Kenya."
-        bgImage="/lovable-uploads/d0c15681-662b-4837-a17c-4178efc8f433.png"
-      />
-
-      <section className="py-20">
+      <section className="py-20 pt-32">
         <div className="container mx-auto px-4 md:px-6">
           <div className="lg:flex lg:gap-12">
             {/* Main Content */}
             <div className="lg:w-2/3">
               <div className="mb-8">
-                <h2 className="text-3xl font-bold text-atdc-green mb-4">Latest Articles</h2>
+                <h2 className="text-3xl font-bold text-atdc-green mb-4 animate-fade-in">Latest Articles</h2>
                 <div className="h-1 w-20 bg-atdc-orange"></div>
               </div>
 
               <div className="space-y-10">
-                {blogs.map((blog) => (
-                  <div key={blog.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                {blogs.map((blog, index) => (
+                  <div 
+                    key={blog.id} 
+                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 animate-fade-in"
+                    style={{animationDelay: `${index * 200}ms`}}
+                  >
                     <div className="md:flex">
                       <div className="md:flex-shrink-0 md:w-2/5">
                         <img 
@@ -89,15 +86,15 @@ const Blog = () => {
               </div>
 
               <div className="mt-10 flex justify-center">
-                <Button className="bg-atdc-orange hover:bg-atdc-orange/90">
+                <Button className="bg-atdc-orange hover:bg-atdc-orange/90 mx-auto">
                   Load More Articles
                 </Button>
               </div>
             </div>
 
             {/* Sidebar */}
-            <div className="lg:w-1/3 mt-12 lg:mt-0">
-              <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+            <div className="lg:w-1/3 mt-12 lg:mt-0 animate-fade-in animation-delay-300">
+              <div className="bg-white rounded-xl shadow-md p-6 mb-8 hover-scale">
                 <h3 className="text-lg font-bold mb-4">Search Articles</h3>
                 <div className="relative">
                   <input 
@@ -109,7 +106,7 @@ const Blog = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+              <div className="bg-white rounded-xl shadow-md p-6 mb-8 hover-scale">
                 <h3 className="text-lg font-bold mb-4">Categories</h3>
                 <ul className="space-y-2">
                   {categories.map((category, index) => (
@@ -126,7 +123,7 @@ const Blog = () => {
                 </ul>
               </div>
 
-              <div className="bg-white rounded-xl shadow-md p-6">
+              <div className="bg-white rounded-xl shadow-md p-6 hover-scale">
                 <h3 className="text-lg font-bold mb-4">Subscribe to Updates</h3>
                 <p className="text-gray-600 mb-4">Get the latest articles and updates delivered to your inbox.</p>
                 <input 

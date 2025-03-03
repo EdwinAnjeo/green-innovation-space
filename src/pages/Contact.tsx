@@ -1,199 +1,151 @@
 
-import { useState } from "react";
-import Layout from "@/components/layout/Layout";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
-import { MailIcon, PhoneIcon, MapPinIcon, ClockIcon } from "lucide-react";
-import MapComponent from "@/components/shared/MapComponent";
+import Layout from '@/components/layout/Layout';
+import { Phone, Mail, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import MapComponent from '@/components/shared/MapComponent';
+import { Separator } from '@/components/ui/separator';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real application, you would send the form data to a server here
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Message Sent",
-      description: "Thank you for contacting us. We'll respond shortly.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
-  };
-
+const ContactPage = () => {
   return (
     <Layout>
       <div className="py-12 container mx-auto px-4 md:px-6 pt-28">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h1 className="text-4xl font-bold text-atdc-green mb-4">Contact Us</h1>
-          <p className="text-gray-600">
-            Have questions about our agricultural technologies or services? 
-            We're here to help. Reach out to us using the contact information below.
+          <h1 className="text-4xl font-bold text-atdc-green mb-4 animate-fade-in">Contact Us</h1>
+          <p className="text-gray-600 animate-fade-in animation-delay-200">
+            Have questions or need assistance? Reach out to us through any of our contact channels below.
           </p>
         </div>
         
-        <Separator className="mb-8 bg-gray-300" />
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div className="bg-atdc-green/10 p-6 rounded-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div className="bg-atdc-green/10 rounded-xl shadow-md p-8 hover-scale animate-fade-in">
             <h2 className="text-2xl font-bold text-atdc-green mb-6">Get in Touch</h2>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-atdc-green"
+                <label htmlFor="name" className="block text-gray-700 mb-2">Full Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-atdc-green focus:border-atdc-green"
+                  placeholder="Your name"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-atdc-green"
+                <label htmlFor="email" className="block text-gray-700 mb-2">Email Address</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-atdc-green focus:border-atdc-green"
+                  placeholder="your.email@example.com"
                 />
               </div>
               
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-atdc-green"
+                <label htmlFor="subject" className="block text-gray-700 mb-2">Subject</label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-atdc-green focus:border-atdc-green"
+                  placeholder="How can we help?"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-atdc-green"
+                <label htmlFor="message" className="block text-gray-700 mb-2">Message</label>
+                <textarea 
+                  id="message" 
+                  rows={4} 
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-atdc-green focus:border-atdc-green"
+                  placeholder="Your message here..."
                 ></textarea>
               </div>
               
-              <Button 
-                type="submit"
-                className="bg-[#CC5500] hover:bg-[#CC5500]/90 text-white"
-              >
+              <Button className="w-full bg-atdc-green hover:bg-atdc-green/90">
                 Send Message
               </Button>
             </form>
-
-            <div className="mt-8 bg-white p-6 rounded-lg text-center">
-              <h3 className="font-bold text-atdc-green mb-2">Visit Our Stations</h3>
-              <p className="text-gray-600 mb-4">
-                We have 10 stations across Kenya. Find the one nearest to you to learn more about our services.
-              </p>
-              <div className="flex justify-center">
-                <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
-                  <a href="/stations">View Stations</a>
-                </Button>
-              </div>
-            </div>
           </div>
           
-          <div className="bg-[#CC5500]/10 p-6 rounded-lg">
+          <div className="bg-[#CC5500]/10 rounded-xl shadow-md p-8 hover-scale animate-fade-in animation-delay-200">
             <h2 className="text-2xl font-bold text-[#CC5500] mb-6">Contact Information</h2>
             
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="bg-[#CC5500]/10 p-3 rounded-full mr-4">
-                  <MailIcon className="text-[#CC5500]" />
+                <div className="bg-[#CC5500]/20 p-3 rounded-full mr-4">
+                  <MapPin className="text-[#CC5500]" size={20} />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900">Email</h3>
-                  <p className="text-gray-600">info@atdc.go.ke</p>
-                  <p className="text-gray-600">support@atdc.go.ke</p>
+                  <h3 className="font-bold text-lg mb-1">Our Location</h3>
+                  <p className="text-gray-600">
+                    ATDC Headquarters, Kilimo House<br />
+                    Cathedral Road, Nairobi<br />
+                    Kenya
+                  </p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="bg-[#CC5500]/10 p-3 rounded-full mr-4">
-                  <PhoneIcon className="text-[#CC5500]" />
+                <div className="bg-[#CC5500]/20 p-3 rounded-full mr-4">
+                  <Phone className="text-[#CC5500]" size={20} />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+254 700 000 000</p>
-                  <p className="text-gray-600">+254 800 000 000</p>
+                  <h3 className="font-bold text-lg mb-1">Phone Number</h3>
+                  <p className="text-gray-600">
+                    +254 20 XXX XXXX<br />
+                    +254 7XX XXX XXX
+                  </p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="bg-[#CC5500]/10 p-3 rounded-full mr-4">
-                  <MapPinIcon className="text-[#CC5500]" />
+                <div className="bg-[#CC5500]/20 p-3 rounded-full mr-4">
+                  <Mail className="text-[#CC5500]" size={20} />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900">Headquarters</h3>
-                  <p className="text-gray-600">Kilimo House, Cathedral Road</p>
-                  <p className="text-gray-600">Nairobi, Kenya</p>
+                  <h3 className="font-bold text-lg mb-1">Email Address</h3>
+                  <p className="text-gray-600">
+                    info@atdc.go.ke<br />
+                    support@atdc.go.ke
+                  </p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="bg-[#CC5500]/10 p-3 rounded-full mr-4">
-                  <ClockIcon className="text-[#CC5500]" />
+                <div className="bg-[#CC5500]/20 p-3 rounded-full mr-4">
+                  <Clock className="text-[#CC5500]" size={20} />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900">Working Hours</h3>
-                  <p className="text-gray-600">Monday - Friday: 8:00 AM - 5:00 PM</p>
-                  <p className="text-gray-600">Saturday - Sunday: Closed</p>
+                  <h3 className="font-bold text-lg mb-1">Office Hours</h3>
+                  <p className="text-gray-600">
+                    Monday - Friday: 8:00 AM - 5:00 PM<br />
+                    Saturday & Sunday: Closed
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
         
-        {/* Map */}
-        <MapComponent />
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-atdc-green mb-6 text-center animate-fade-in">Visit Our Station</h2>
+          <div className="flex justify-center mb-8 animate-fade-in animation-delay-200">
+            <Button asChild className="bg-[#CC5500] hover:bg-[#CC5500]/90">
+              <Link to="/stations">
+                View All Stations <ArrowRight size={16} className="ml-2" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+        
+        <div className="mb-12 animate-fade-in animation-delay-300">
+          <h2 className="text-2xl font-bold text-atdc-green mb-6">Find Us</h2>
+          <MapComponent />
+        </div>
       </div>
     </Layout>
   );
 };
 
-export default Contact;
+export default ContactPage;

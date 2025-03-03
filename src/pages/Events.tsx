@@ -1,6 +1,5 @@
 
 import Layout from '@/components/layout/Layout';
-import HeroSection from '@/components/shared/HeroSection';
 import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -31,34 +30,29 @@ const events = [
     location: "ATDC Bungoma",
     time: "9:00 AM - 4:00 PM",
     description: "Experience live demonstrations of the latest agricultural machinery and equipment designed to enhance farming efficiency and productivity.",
-    image: "/lovable-uploads/237d93b7-93f1-44f9-9c4b-94e1268412a8.png"
+    image: "/lovable-uploads/87a057d4-92b9-4e7e-af58-ff17b236dead.png"
   }
 ];
 
 const Events = () => {
   return (
     <Layout>
-      <HeroSection
-        title="Upcoming Events"
-        description="Stay updated with our latest events, workshops, and training programs that aim to empower farmers and agricultural stakeholders across Kenya."
-        bgImage="/lovable-uploads/25322486-92b7-45ea-837c-4360c9f718fc.png"
-      />
-
-      <section className="py-20">
+      <section className="py-20 pt-32">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4 text-center">Upcoming Events</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4 text-center animate-fade-in">Upcoming Events</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-center animate-fade-in animation-delay-200">
               Join us at our various events and training programs designed to enhance agricultural knowledge 
               and promote sustainable farming practices across Kenya.
             </p>
           </div>
 
           <div className="space-y-12">
-            {events.map((event) => (
+            {events.map((event, index) => (
               <div 
                 key={event.id} 
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 animate-fade-in hover-scale"
+                style={{animationDelay: `${index * 200}ms`}}
               >
                 <div className="md:flex">
                   <div className="md:flex-shrink-0 md:w-2/5">
@@ -97,7 +91,7 @@ const Events = () => {
           </div>
 
           <div className="mt-16 text-center">
-            <Button asChild variant="outline" className="border-atdc-green text-atdc-green hover:bg-atdc-green/10">
+            <Button asChild variant="outline" className="border-atdc-green text-atdc-green hover:bg-atdc-green/10 bg-atdc-green text-white hover:bg-atdc-green/90">
               <Link to="/events/archive">
                 View Past Events
               </Link>
