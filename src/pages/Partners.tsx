@@ -16,7 +16,7 @@ const Partners = () => {
           </p>
         </div>
         
-        <div className="mb-16 animate-fade-in max-w-3xl mx-auto">
+        <div className="mb-16 animate-fade-in w-full">
           <PartnersCarousel showButtons={true} noAutoScroll={true} showAllPartners={true} />
         </div>
         

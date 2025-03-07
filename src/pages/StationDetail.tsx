@@ -1,4 +1,4 @@
-
+<lov-code>
 import { useParams } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Phone, Mail, Users, CheckCircle2, ArrowRight, Quote } from 'lucide-react';
@@ -465,23 +465,10 @@ const defaultStation = {
 
 const StationDetail = () => {
   const { stationId } = useParams<{ stationId: string }>();
-  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   
   const station = stationsData[stationId as keyof typeof stationsData] || {
     ...defaultStation,
     name: `${stationId?.charAt(0).toUpperCase()}${stationId?.slice(1)} ATDC`
-  };
-
-  const nextStory = () => {
-    setCurrentStoryIndex((prevIndex) => 
-      prevIndex === station.successStories.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevStory = () => {
-    setCurrentStoryIndex((prevIndex) => 
-      prevIndex === 0 ? station.successStories.length - 1 : prevIndex - 1
-    );
   };
 
   return (
@@ -553,129 +540,17 @@ const StationDetail = () => {
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="flex flex-col">
-              <div className="bg-white rounded-xl overflow-hidden shadow-md">
+            <div className="flex flex-col h-full">
+              <div className="bg-white rounded-xl overflow-hidden shadow-md h-full">
                 <img 
                   src={station.engineer.photo} 
                   alt={station.engineer.name} 
-                  className="w-full h-auto"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
             
-            <div className="flex flex-col justify-center">
-              <div className="bg-white rounded-xl shadow-md p-6">
+            <div className="flex flex-col justify-center h-full">
+              <div className="bg-white rounded-xl shadow-md p-6 h-full">
                 <h3 className="text-xl font-bold mb-1">{station.engineer.name}</h3>
                 <p className="text-atdc-green font-medium mb-4">Center Engineer</p>
-                
-                <h4 className="text-lg font-semibold text-gray-800 mb-2">Engineer's Bio</h4>
-                <p className="text-gray-600 mb-6">{station.engineer.bio}</p>
-                
-                <h4 className="text-lg font-semibold text-gray-800 mb-2">Engineer's Remarks</h4>
-                <div className="relative p-4 bg-gray-50 rounded-lg mb-6">
-                  <Quote size={24} className="absolute top-2 left-2 text-atdc-green/20" />
-                  <Quote size={24} className="absolute bottom-2 right-2 text-atdc-green/20 rotate-180" />
-                  <p className="text-gray-600 italic relative z-10 px-6 py-2">
-                    "{station.engineer.comment}"
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex justify-center mt-8">
-            <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
-              <Link to="/contact">
-                Get in Touch
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-      
-      <section className="py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-atdc-green mb-4">Staff Establishment</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our dedicated team of professionals working to serve farmers and agricultural stakeholders.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {station.staff.breakdown.map((item, index) => (
-              <div 
-                key={index}
-                className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover-scale text-center"
-              >
-                <div className="text-3xl font-bold text-atdc-green mb-2 text-center">{item.count}</div>
-                <p className="text-gray-700">{item.title}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      <section className="py-16 bg-[#CC5500]/10">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#CC5500] mb-4">Functions of the Center</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Key activities and services provided by {station.name} to support agricultural development.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {station.functions.map((item, index) => (
-              <div 
-                key={index}
-                className="flex items-start p-6 bg-white rounded-xl shadow-md animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="mr-4">
-                  <div className="bg-[#CC5500]/10 p-3 rounded-full">
-                    <CheckCircle2 size={24} className="text-[#CC5500]" />
-                  </div>
-                </div>
-                <p className="text-gray-700">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      <section className="py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-atdc-green mb-4">Success Story</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Real-world impact and transformation achieved through the work of {station.name}.
-            </p>
-          </div>
-          
-          <div className="relative max-w-5xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden animate-fade-in">
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="h-full">
-                  <img 
-                    src={station.successStories[0].image} 
-                    alt={station.successStories[0].title} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 md:p-10 flex flex-col justify-center">
-                  <h3 className="text-2xl font-bold mb-4">{station.successStories[0].title}</h3>
-                  <p className="text-gray-600 mb-6">
-                    {station.successStories[0].story}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </Layout>
-  );
-};
-
-export default StationDetail;

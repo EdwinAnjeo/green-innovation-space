@@ -44,44 +44,23 @@ const PartnersCarousel = ({
   noAutoScroll = false,
   showAllPartners = false
 }: PartnersCarouselProps) => {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const scrollAmount = 300;
+  const [activeIndex, setActiveIndex] = useState(0);
   const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
-  const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
 
-  const handleScrollLeft = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    }
-  };
-
-  const handleScrollRight = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-  
-  // Auto scroll function
+  // Auto slide function
   useEffect(() => {
-    if (noAutoScroll) return;
+    if (noAutoScroll || showAllPartners) return;
     
     const startAutoScroll = () => {
       autoScrollInterval.current = setInterval(() => {
-        if (carouselRef.current) {
-          // Check if we're at the end, if so, scroll back to start
-          if (carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth) {
-            carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-          } else {
-            handleScrollRight();
-          }
-        }
+        setActiveIndex((prevIndex) => (prevIndex + 1) % partners.length);
       }, 3000);
     };
 
     // Initial delay before starting the auto-scroll
     const initialDelay = setTimeout(() => {
       startAutoScroll();
-    }, 1000); // 1 second delay as requested
+    }, 1000); // 1 second delay
 
     // Clean up interval and timeout on unmount
     return () => {
@@ -90,22 +69,22 @@ const PartnersCarousel = ({
       }
       clearTimeout(initialDelay);
     };
-  }, [noAutoScroll]);
-
-  // Slideshow for partners instead of scrolling
-  useEffect(() => {
-    if (noAutoScroll || !showAllPartners) return;
-    
-    const slideshowInterval = setInterval(() => {
-      setCurrentPartnerIndex((prevIndex) => 
-        prevIndex === partners.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
-    
-    return () => clearInterval(slideshowInterval);
   }, [noAutoScroll, showAllPartners]);
 
-  // Pause auto-scroll on hover
+  const handlePrevClick = () => {
+    setActiveIndex((prevIndex) => (prevIndex === 0 ? partners.length - 1 : prevIndex - 1));
+  };
+
+  const handleNextClick = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % partners.length);
+  };
+
+  // Handle indicators click
+  const goToSlide = (index: number) => {
+    setActiveIndex(index);
+  };
+
+  // Pause auto scroll on hover
   const handleMouseEnter = () => {
     if (!noAutoScroll && autoScrollInterval.current) {
       clearInterval(autoScrollInterval.current);
@@ -113,25 +92,19 @@ const PartnersCarousel = ({
     }
   };
 
-  // Resume auto-scroll when mouse leaves
+  // Resume auto scroll when mouse leaves
   const handleMouseLeave = () => {
-    if (!noAutoScroll && !autoScrollInterval.current) {
+    if (!noAutoScroll && !autoScrollInterval.current && !showAllPartners) {
       autoScrollInterval.current = setInterval(() => {
-        if (carouselRef.current) {
-          if (carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth) {
-            carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-          } else {
-            handleScrollRight();
-          }
-        }
+        setActiveIndex((prevIndex) => (prevIndex + 1) % partners.length);
       }, 3000);
     }
   };
 
-  // If showing all partners in a grid
+  // If showing all partners in a grid (for Partners page)
   if (showAllPartners) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
         {partners.map((partner, index) => (
           <div 
             key={index}
@@ -163,78 +136,87 @@ const PartnersCarousel = ({
     );
   }
 
-  const carouselClassNames = noAutoScroll ? "flex overflow-x-auto space-x-6 pb-4 no-scrollbar" : "flex overflow-x-auto space-x-6 pb-4 no-scrollbar animate-carousel";
-
   return (
-    <div className="relative">
-      {/* Navigation Buttons - only show if showButtons is true */}
-      {showButtons && (
-        <>
-          <button 
-            onClick={handleScrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors -ml-4 md:-ml-6"
-            aria-label="Scroll left"
-          >
-            <ArrowLeft size={20} className="text-atdc-green" />
-          </button>
-          
-          <button 
-            onClick={handleScrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors -mr-4 md:-mr-6"
-            aria-label="Scroll right"
-          >
-            <ArrowRight size={20} className="text-atdc-green" />
-          </button>
-        </>
-      )}
+    <div 
+      className="relative max-w-3xl mx-auto"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Bootstrap-style carousel */}
+      <div id="partnersCarousel" className="carousel relative rounded-xl overflow-hidden shadow-lg">
+        {/* Carousel indicators */}
+        <ol className="carousel-indicators absolute bottom-4 left-0 right-0 flex justify-center z-10 space-x-2">
+          {partners.map((_, index) => (
+            <li 
+              key={index} 
+              onClick={() => goToSlide(index)}
+              className={`inline-block w-3 h-3 rounded-full cursor-pointer transition-colors ${activeIndex === index ? 'bg-white' : 'bg-white/50'}`}
+            ></li>
+          ))}
+        </ol>
 
-      {/* Carousel */}
-      <div 
-        ref={carouselRef}
-        className={carouselClassNames}
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {partners.map((partner, index) => (
-          <div 
-            key={index}
-            className="flex-shrink-0 w-[300px] bg-white rounded-xl shadow-md overflow-hidden card-hover animate-fade-in"
-            style={{ animationDelay: `${index * 100}ms` }}
-          >
-            {linkToPartners ? (
-              <Link to="/partners" className="h-40 flex items-center justify-center p-6 bg-white">
-                <img 
-                  src={partner.logo} 
-                  alt={partner.name} 
-                  className="max-h-full max-w-full object-contain hover-scale"
-                />
-              </Link>
-            ) : (
-              <div className="h-40 flex items-center justify-center p-6 bg-white">
-                <img 
-                  src={partner.logo} 
-                  alt={partner.name} 
-                  className="max-h-full max-w-full object-contain"
-                />
+        {/* Carousel items */}
+        <div className="carousel-inner relative w-full overflow-hidden bg-white rounded-xl">
+          {partners.map((partner, index) => (
+            <div 
+              key={index}
+              className={`carousel-item transition-opacity duration-500 absolute inset-0 ${
+                activeIndex === index ? 'opacity-100 visible' : 'opacity-0 invisible'
+              }`}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+                <div className="h-full flex items-center justify-center p-6 bg-white">
+                  {linkToPartners ? (
+                    <Link to="/partners" className="w-full h-full flex items-center justify-center">
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name} 
+                        className="max-h-full max-w-full object-contain hover-scale"
+                      />
+                    </Link>
+                  ) : (
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name} 
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  )}
+                </div>
+                <div className="p-6 flex flex-col justify-center">
+                  <h3 className="font-bold text-lg mb-2">{partner.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{partner.description}</p>
+                  {showButtons && (
+                    <a 
+                      href={partner.website} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-block bg-[#CC5500] hover:bg-[#CC5500]/90 text-white px-4 py-2 rounded-md text-sm font-medium"
+                    >
+                      Learn More
+                    </a>
+                  )}
+                </div>
               </div>
-            )}
-            <div className="p-6 border-t">
-              <h3 className="font-bold text-lg mb-2 line-clamp-2">{partner.name}</h3>
-              <p className="text-gray-600 text-sm mb-4">{partner.description}</p>
-              {showButtons && (
-                <a 
-                  href={partner.website} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-[#CC5500] hover:bg-[#CC5500]/90 text-white px-4 py-2 rounded-md text-sm font-medium"
-                >
-                  Learn More
-                </a>
-              )}
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        
+        {/* Navigation buttons */}
+        <button 
+          onClick={handlePrevClick}
+          className="carousel-control-prev absolute top-1/2 left-4 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
+          aria-label="Previous"
+        >
+          <ArrowLeft size={20} className="text-atdc-green" />
+        </button>
+        
+        <button 
+          onClick={handleNextClick}
+          className="carousel-control-next absolute top-1/2 right-4 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
+          aria-label="Next"
+        >
+          <ArrowRight size={20} className="text-atdc-green" />
+        </button>
       </div>
     </div>
   );
