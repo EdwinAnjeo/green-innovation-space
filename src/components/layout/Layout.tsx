@@ -13,11 +13,11 @@ const Layout = ({ children, showPartnersCarousel = true }: LayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow pt-20">
+      <main className="flex-grow pt-20 w-full">
         {children}
       </main>
       {showPartnersCarousel && 
-        <section className="bg-white py-12 animate-fade-in">
+        <section className="bg-white py-12 animate-fade-in w-full">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mb-10 text-center animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Our Partners</h2>
@@ -25,15 +25,15 @@ const Layout = ({ children, showPartnersCarousel = true }: LayoutProps) => {
                 We collaborate with various organizations to promote agricultural development across Kenya.
               </p>
             </div>
-            <div className="max-w-3xl mx-auto">
-              <PartnersCarousel linkToPartners={true} />
+            <div className="w-full mx-auto">
+              <PartnersCarousel linkToPartners={true} showButtons={true} />
             </div>
           </div>
         </section>
       }
       
       {/* Coat of Arms Section - Updated text to Agriculture Training Development Center */}
-      <section className="bg-gray-50 py-10 text-center">
+      <section className="bg-gray-50 py-10 text-center w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-center animate-fade-in">
             <img 

@@ -9,7 +9,7 @@ interface FunctionsSectionProps {
 
 const FunctionsSection: React.FC<FunctionsSectionProps> = ({ station }) => {
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-[#CC5500]/10">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-atdc-green mb-4">Our Functions</h2>
@@ -23,7 +23,7 @@ const FunctionsSection: React.FC<FunctionsSectionProps> = ({ station }) => {
             <div key={index} className="bg-white rounded-xl shadow-md p-6">
               <div className="flex items-start gap-3">
                 <div className="mt-1">
-                  <CheckCircle2 className="text-atdc-green" />
+                  <CheckCircle2 className="text-[#CC5500]" />
                 </div>
                 <p className="text-gray-600">{func}</p>
               </div>

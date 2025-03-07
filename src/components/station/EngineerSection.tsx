@@ -19,15 +19,18 @@ const EngineerSection: React.FC<EngineerSectionProps> = ({ station }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="flex flex-col h-full">
             <div className="bg-white rounded-xl overflow-hidden shadow-md h-full">
-              <img 
-                src={station.engineer.photo} 
-                alt={station.engineer.name} 
-                className="w-full h-full object-cover"
-              />
+              <div className="h-full flex items-center justify-center">
+                <img 
+                  src={station.engineer.photo} 
+                  alt={station.engineer.name} 
+                  className="w-full h-full object-cover object-center"
+                  style={{ maxHeight: '400px' }}
+                />
+              </div>
             </div>
           </div>
           
-          <div className="flex flex-col justify-center h-full">
+          <div className="flex flex-col justify-center">
             <div className="bg-white rounded-xl shadow-md p-6 h-full">
               <h3 className="text-xl font-bold mb-1">{station.engineer.name}</h3>
               <p className="text-atdc-green font-medium mb-4">Center Engineer</p>

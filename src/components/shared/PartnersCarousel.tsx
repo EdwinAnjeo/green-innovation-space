@@ -7,24 +7,28 @@ import { Link } from 'react-router-dom';
 const partners = [
   {
     name: "National Agricultural and Rural Inclusive Growth Project (NARIGP)",
+    abbreviation: "NARIGP",
     logo: "/lovable-uploads/3efe2b4e-7c58-4305-80a6-69d338efb5a8.png",
     description: "Supporting inclusive and sustainable agricultural growth",
     website: "https://www.narigp.go.ke"
   },
   {
     name: "Small Scale Irrigation & Value Addition Project (SIVAP)",
+    abbreviation: "SIVAP",
     logo: "/lovable-uploads/066da1e9-8b5a-461f-b6b8-09ea6dbed5a0.png",
     description: "Enhancing irrigation infrastructure and value addition capabilities",
     website: "https://www.sivap.go.ke" 
   },
   {
     name: "Kenya Cereal Enhancement Programme (KCEP)",
+    abbreviation: "KCEP",
     logo: "/lovable-uploads/f22165ef-cea5-4463-97ba-dba0a7a9089b.png",
     description: "Improving food security through cereal production enhancement",
     website: "https://www.kcep.go.ke"
   },
   {
     name: "Japanese International Cooperation Agency (JICA)",
+    abbreviation: "JICA",
     logo: "/lovable-uploads/157d64f5-29e9-44b9-9de3-2bb3f7237c93.png",
     description: "Technical cooperation for sustainable agricultural development",
     website: "https://www.jica.go.jp/english/"
@@ -138,7 +142,7 @@ const PartnersCarousel = ({
 
   return (
     <div 
-      className="relative max-w-3xl mx-auto"
+      className="relative max-w-6xl mx-auto w-full"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -184,6 +188,7 @@ const PartnersCarousel = ({
                 </div>
                 <div className="p-6 flex flex-col justify-center">
                   <h3 className="font-bold text-lg mb-2">{partner.name}</h3>
+                  <p className="text-sm font-semibold text-atdc-green mb-2">{partner.abbreviation}</p>
                   <p className="text-gray-600 text-sm mb-4">{partner.description}</p>
                   {showButtons && (
                     <a 

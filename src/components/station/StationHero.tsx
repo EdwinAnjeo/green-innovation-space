@@ -9,7 +9,7 @@ interface StationHeroProps {
 const StationHero: React.FC<StationHeroProps> = ({ station }) => {
   return (
     <div 
-      className="relative h-[50vh] md:h-[60vh]"
+      className="relative h-[50vh] md:h-[60vh] w-full"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${station.image})`,
         backgroundSize: 'cover',

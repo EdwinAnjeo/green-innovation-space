@@ -8,7 +8,7 @@ interface StaffSectionProps {
 
 const StaffSection: React.FC<StaffSectionProps> = ({ station }) => {
   return (
-    <section className="py-12">
+    <section className="py-12 w-full">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-atdc-green mb-4">Staff Establishment</h2>

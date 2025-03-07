@@ -19,12 +19,14 @@ const StationDetail = () => {
 
   return (
     <Layout>
-      <StationHero station={station} />
-      <ContactInfoSection station={station} />
-      <EngineerSection station={station} />
-      <StaffSection station={station} />
-      <FunctionsSection station={station} />
-      <SuccessStorySection station={station} />
+      <div className="w-full">
+        <StationHero station={station} />
+        <ContactInfoSection station={station} />
+        <EngineerSection station={station} />
+        <StaffSection station={station} />
+        <FunctionsSection station={station} />
+        <SuccessStorySection station={station} />
+      </div>
     </Layout>
   );
 };
