@@ -1,3 +1,4 @@
+
 import { useParams } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Phone, Mail, Users, CheckCircle2, ArrowRight, Quote } from 'lucide-react';
@@ -506,39 +507,39 @@ const StationDetail = () => {
       </div>
       
       <div className="container mx-auto px-4 md:px-6">
-        <div className="bg-white shadow-lg rounded-xl p-6 md:p-8 -mt-12 md:-mt-16 relative z-10 mb-16">
+        <div className="bg-atdc-green shadow-lg rounded-xl p-6 md:p-8 -mt-12 md:-mt-16 relative z-10 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex items-center">
-              <div className="bg-atdc-green p-3 rounded-full mr-4">
-                <Mail size={24} className="text-white" />
+              <div className="bg-white p-3 rounded-full mr-4">
+                <Mail size={24} className="text-[#CC5500]" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Email</p>
-                <a href={`mailto:${station.email}`} className="text-lg font-medium hover:text-atdc-green transition-colors">
+                <p className="text-sm text-white/80">Email</p>
+                <a href={`mailto:${station.email}`} className="text-lg font-medium text-white hover:text-white/80 transition-colors">
                   {station.email}
                 </a>
               </div>
             </div>
             
             <div className="flex items-center">
-              <div className="bg-atdc-green p-3 rounded-full mr-4">
-                <Phone size={24} className="text-white" />
+              <div className="bg-white p-3 rounded-full mr-4">
+                <Phone size={24} className="text-[#CC5500]" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Phone</p>
-                <a href={`tel:${station.phone}`} className="text-lg font-medium hover:text-atdc-green transition-colors">
+                <p className="text-sm text-white/80">Phone</p>
+                <a href={`tel:${station.phone}`} className="text-lg font-medium text-white hover:text-white/80 transition-colors">
                   {station.phone}
                 </a>
               </div>
             </div>
             
             <div className="flex items-center">
-              <div className="bg-atdc-green p-3 rounded-full mr-4">
-                <Users size={24} className="text-white" />
+              <div className="bg-white p-3 rounded-full mr-4">
+                <Users size={24} className="text-[#CC5500]" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Staff</p>
-                <p className="text-lg font-medium">{station.staff.total} Team Members</p>
+                <p className="text-sm text-white/80">Staff</p>
+                <p className="text-lg font-medium text-white">{station.staff.total} Team Members</p>
               </div>
             </div>
           </div>
@@ -547,39 +548,47 @@ const StationDetail = () => {
       
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-atdc-green">Center Engineer</h2>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="lg:col-span-1">
+            <div className="flex flex-col">
               <div className="bg-white rounded-xl overflow-hidden shadow-md">
                 <img 
                   src={station.engineer.photo} 
                   alt={station.engineer.name} 
                   className="w-full h-auto"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-1">{station.engineer.name}</h3>
-                  <p className="text-atdc-green font-medium mb-3">Center Engineer</p>
-                  <p className="text-gray-600 text-sm">{station.engineer.bio}</p>
-                </div>
               </div>
             </div>
             
-            <div className="lg:col-span-1 flex flex-col justify-center">
-              <div className="relative mb-8 p-8 bg-white rounded-xl shadow-md">
-                <Quote size={48} className="absolute top-4 left-4 text-atdc-green/20" />
-                <Quote size={48} className="absolute bottom-4 right-4 text-atdc-green/20 rotate-180" />
-                <p className="text-xl text-gray-600 italic relative z-10 px-8">
-                  "{station.engineer.comment}"
-                </p>
-              </div>
-              
-              <div className="flex justify-center">
-                <Button asChild className="mt-4 bg-atdc-green hover:bg-atdc-green/90">
-                  <Link to="/contact">
-                    Get in Touch
-                  </Link>
-                </Button>
+            <div className="flex flex-col justify-center">
+              <div className="bg-white rounded-xl shadow-md p-6">
+                <h3 className="text-xl font-bold mb-1">{station.engineer.name}</h3>
+                <p className="text-atdc-green font-medium mb-4">Center Engineer</p>
+                
+                <h4 className="text-lg font-semibold text-gray-800 mb-2">Engineer's Bio</h4>
+                <p className="text-gray-600 mb-6">{station.engineer.bio}</p>
+                
+                <h4 className="text-lg font-semibold text-gray-800 mb-2">Engineer's Remarks</h4>
+                <div className="relative p-4 bg-gray-50 rounded-lg mb-6">
+                  <Quote size={24} className="absolute top-2 left-2 text-atdc-green/20" />
+                  <Quote size={24} className="absolute bottom-2 right-2 text-atdc-green/20 rotate-180" />
+                  <p className="text-gray-600 italic relative z-10 px-6 py-2">
+                    "{station.engineer.comment}"
+                  </p>
+                </div>
               </div>
             </div>
+          </div>
+          
+          <div className="flex justify-center mt-8">
+            <Button asChild className="bg-atdc-green hover:bg-atdc-green/90">
+              <Link to="/contact">
+                Get in Touch
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -599,7 +608,7 @@ const StationDetail = () => {
                 key={index}
                 className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover-scale text-center"
               >
-                <div className="text-3xl font-bold text-atdc-green mb-2">{item.count}</div>
+                <div className="text-3xl font-bold text-atdc-green mb-2 text-center">{item.count}</div>
                 <p className="text-gray-700">{item.title}</p>
               </div>
             ))}
@@ -638,9 +647,9 @@ const StationDetail = () => {
       <section className="py-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-atdc-green mb-4">Success Stories</h2>
+            <h2 className="text-3xl font-bold text-atdc-green mb-4">Success Story</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Real-world impacts and transformations achieved through the work of {station.name}.
+              Real-world impact and transformation achieved through the work of {station.name}.
             </p>
           </div>
           

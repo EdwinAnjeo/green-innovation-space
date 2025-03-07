@@ -25,7 +25,7 @@ const Layout = ({ children, showPartnersCarousel = true }: LayoutProps) => {
                 We collaborate with various organizations to promote agricultural development across Kenya.
               </p>
             </div>
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-3xl mx-auto">
               <PartnersCarousel linkToPartners={true} />
             </div>
           </div>

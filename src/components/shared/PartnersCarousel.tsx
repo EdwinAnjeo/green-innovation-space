@@ -1,5 +1,5 @@
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -35,12 +35,19 @@ interface PartnersCarouselProps {
   linkToPartners?: boolean;
   showButtons?: boolean;
   noAutoScroll?: boolean;
+  showAllPartners?: boolean;
 }
 
-const PartnersCarousel = ({ linkToPartners = false, showButtons = false, noAutoScroll = false }: PartnersCarouselProps) => {
+const PartnersCarousel = ({ 
+  linkToPartners = false, 
+  showButtons = false, 
+  noAutoScroll = false,
+  showAllPartners = false
+}: PartnersCarouselProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const scrollAmount = 300;
   const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
+  const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
 
   const handleScrollLeft = () => {
     if (carouselRef.current) {
@@ -54,7 +61,7 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false, noAutoS
     }
   };
   
-  // Auto scroll function - updated to move from right to left with 1s delay
+  // Auto scroll function
   useEffect(() => {
     if (noAutoScroll) return;
     
@@ -65,16 +72,16 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false, noAutoS
           if (carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth) {
             carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
-            handleScrollLeft(); // Changed to scroll left instead of right
+            handleScrollRight();
           }
         }
-      }, 1000); // Changed to 1 second as requested
+      }, 3000);
     };
 
     // Initial delay before starting the auto-scroll
     const initialDelay = setTimeout(() => {
       startAutoScroll();
-    }, 1000); // Wait 1 second before starting
+    }, 1000); // 1 second delay as requested
 
     // Clean up interval and timeout on unmount
     return () => {
@@ -85,6 +92,19 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false, noAutoS
     };
   }, [noAutoScroll]);
 
+  // Slideshow for partners instead of scrolling
+  useEffect(() => {
+    if (noAutoScroll || !showAllPartners) return;
+    
+    const slideshowInterval = setInterval(() => {
+      setCurrentPartnerIndex((prevIndex) => 
+        prevIndex === partners.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+    
+    return () => clearInterval(slideshowInterval);
+  }, [noAutoScroll, showAllPartners]);
+
   // Pause auto-scroll on hover
   const handleMouseEnter = () => {
     if (!noAutoScroll && autoScrollInterval.current) {
@@ -93,7 +113,7 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false, noAutoS
     }
   };
 
-  // Resume auto-scroll when mouse leaves - updated to move from right to left
+  // Resume auto-scroll when mouse leaves
   const handleMouseLeave = () => {
     if (!noAutoScroll && !autoScrollInterval.current) {
       autoScrollInterval.current = setInterval(() => {
@@ -101,12 +121,47 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false, noAutoS
           if (carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth) {
             carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
-            handleScrollLeft(); // Changed to scroll left instead of right
+            handleScrollRight();
           }
         }
-      }, 1000); // Changed to 1 second
+      }, 3000);
     }
   };
+
+  // If showing all partners in a grid
+  if (showAllPartners) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {partners.map((partner, index) => (
+          <div 
+            key={index}
+            className="flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden card-hover animate-fade-in"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            <div className="h-40 flex items-center justify-center p-6 bg-white">
+              <img 
+                src={partner.logo} 
+                alt={partner.name} 
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
+            <div className="p-6 border-t">
+              <h3 className="font-bold text-lg mb-2 line-clamp-2">{partner.name}</h3>
+              <p className="text-gray-600 text-sm mb-4">{partner.description}</p>
+              <a 
+                href={partner.website} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block bg-[#CC5500] hover:bg-[#CC5500]/90 text-white px-4 py-2 rounded-md text-sm font-medium"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   const carouselClassNames = noAutoScroll ? "flex overflow-x-auto space-x-6 pb-4 no-scrollbar" : "flex overflow-x-auto space-x-6 pb-4 no-scrollbar animate-carousel";
 

@@ -18,17 +18,17 @@ const DesktopNavigation = ({ scrolled }: DesktopNavigationProps) => {
 
   return (
     <nav className="hidden lg:flex items-center space-x-6">
-      <Link to="/" className={`nav-link text-sm ${location.pathname === '/' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
+      <Link to="/" className={`nav-link text-sm ${location.pathname === '/' ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}>
         Home
       </Link>
-      <Link to="/about" className={`nav-link text-sm ${location.pathname === '/about' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
+      <Link to="/about" className={`nav-link text-sm ${location.pathname === '/about' ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}>
         About Us
       </Link>
       
       {/* ATDC Stations Dropdown */}
       <div className="relative group">
         <button 
-          className={`flex items-center space-x-1 text-sm ${location.pathname.includes('/stations') ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}
+          className={`flex items-center space-x-1 text-sm ${location.pathname.includes('/stations') ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}
         >
           <span>ATDC Stations</span>
           <ChevronDown size={14} />
@@ -56,19 +56,19 @@ const DesktopNavigation = ({ scrolled }: DesktopNavigationProps) => {
         </div>
       </div>
 
-      <Link to="/partners" className={`nav-link text-sm ${location.pathname === '/partners' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
+      <Link to="/partners" className={`nav-link text-sm ${location.pathname === '/partners' ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}>
         Partners
       </Link>
       
-      <Link to="/events" className={`nav-link text-sm ${location.pathname === '/events' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
+      <Link to="/events" className={`nav-link text-sm ${location.pathname === '/events' ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}>
         Events
       </Link>
       
-      <Link to="/blog" className={`nav-link text-sm ${location.pathname === '/blog' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
+      <Link to="/blog" className={`nav-link text-sm ${location.pathname === '/blog' ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}>
         Blog
       </Link>
       
-      <Link to="/contact" className={`nav-link text-sm ${location.pathname === '/contact' ? (scrolled ? 'text-white font-semibold' : 'text-atdc-green font-semibold') : (scrolled ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-atdc-green')} transition-colors`}>
+      <Link to="/contact" className={`nav-link text-sm ${location.pathname === '/contact' ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}>
         Contact Us
       </Link>
       

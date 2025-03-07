@@ -16,8 +16,8 @@ const Partners = () => {
           </p>
         </div>
         
-        <div className="mb-16 animate-fade-in max-w-5xl mx-auto">
-          <PartnersCarousel showButtons={true} noAutoScroll={true} />
+        <div className="mb-16 animate-fade-in max-w-3xl mx-auto">
+          <PartnersCarousel showButtons={true} noAutoScroll={true} showAllPartners={true} />
         </div>
         
         <Separator className="mb-8 bg-gray-300" />
@@ -54,7 +54,7 @@ const Partners = () => {
         
         <Separator className="mb-8 bg-gray-300" />
         
-        {/* Become a Partner CTA Section - Added back as requested */}
+        {/* Become a Partner CTA Section */}
         <div className="bg-gray-50 rounded-xl p-8 shadow-md mb-16 animate-fade-in animation-delay-400">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-atdc-green mb-6">Become Our Partner</h2>
