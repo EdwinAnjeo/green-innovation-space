@@ -16,8 +16,8 @@ const Partners = () => {
           </p>
         </div>
         
-        <div className="mb-16 animate-fade-in">
-          <PartnersCarousel showButtons={true} />
+        <div className="mb-16 animate-fade-in max-w-5xl mx-auto">
+          <PartnersCarousel showButtons={true} noAutoScroll={true} />
         </div>
         
         <Separator className="mb-8 bg-gray-300" />

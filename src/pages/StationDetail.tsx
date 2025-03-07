@@ -495,7 +495,7 @@ const StationDetail = () => {
       >
         <div className="absolute inset-0 flex items-center justify-center text-center">
           <div className="px-4">
-            <span className="inline-block px-4 py-1 bg-atdc-green text-white text-sm font-bold rounded-full mb-4">
+            <span className="inline-block px-4 py-1 bg-[#CC5500] text-white text-sm font-bold rounded-full mb-4">
               {station.region} Region
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 animate-fade-in">
@@ -547,7 +547,7 @@ const StationDetail = () => {
       
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="lg:col-span-1">
               <div className="bg-white rounded-xl overflow-hidden shadow-md">
                 <img 
@@ -563,12 +563,12 @@ const StationDetail = () => {
               </div>
             </div>
             
-            <div className="lg:col-span-2 flex flex-col justify-center">
+            <div className="lg:col-span-1 flex flex-col justify-center">
               <div className="relative mb-8 p-8 bg-white rounded-xl shadow-md">
                 <Quote size={48} className="absolute top-4 left-4 text-atdc-green/20" />
                 <Quote size={48} className="absolute bottom-4 right-4 text-atdc-green/20 rotate-180" />
                 <p className="text-xl text-gray-600 italic relative z-10 px-8">
-                  {station.engineer.comment}
+                  "{station.engineer.comment}"
                 </p>
               </div>
               
@@ -597,7 +597,7 @@ const StationDetail = () => {
             {station.staff.breakdown.map((item, index) => (
               <div 
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover-scale"
+                className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover-scale text-center"
               >
                 <div className="text-3xl font-bold text-atdc-green mb-2">{item.count}</div>
                 <p className="text-gray-700">{item.title}</p>
@@ -649,54 +649,18 @@ const StationDetail = () => {
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="h-full">
                   <img 
-                    src={station.successStories[currentStoryIndex].image} 
-                    alt={station.successStories[currentStoryIndex].title} 
+                    src={station.successStories[0].image} 
+                    alt={station.successStories[0].title} 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6 md:p-10 flex flex-col justify-center">
-                  <span className="inline-block px-3 py-1 text-sm font-semibold bg-atdc-green/10 text-atdc-green rounded-full mb-4">
-                    Success Story {currentStoryIndex + 1} of {station.successStories.length}
-                  </span>
-                  <h3 className="text-2xl font-bold mb-4">{station.successStories[currentStoryIndex].title}</h3>
+                  <h3 className="text-2xl font-bold mb-4">{station.successStories[0].title}</h3>
                   <p className="text-gray-600 mb-6">
-                    {station.successStories[currentStoryIndex].story}
+                    {station.successStories[0].story}
                   </p>
                 </div>
               </div>
-            </div>
-            
-            <div className="flex justify-center space-x-4 mt-8">
-              <Button 
-                onClick={prevStory} 
-                variant="outline" 
-                className="rounded-full p-3"
-                aria-label="Previous story"
-              >
-                <ArrowRight className="rotate-180" size={18} />
-              </Button>
-              
-              <div className="flex items-center space-x-2">
-                {station.successStories.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentStoryIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      index === currentStoryIndex ? 'bg-atdc-green' : 'bg-gray-300'
-                    }`}
-                    aria-label={`Go to story ${index + 1}`}
-                  />
-                ))}
-              </div>
-              
-              <Button 
-                onClick={nextStory} 
-                variant="outline" 
-                className="rounded-full p-3"
-                aria-label="Next story"
-              >
-                <ArrowRight size={18} />
-              </Button>
             </div>
           </div>
         </div>

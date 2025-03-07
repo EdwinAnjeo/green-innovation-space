@@ -34,9 +34,10 @@ const partners = [
 interface PartnersCarouselProps {
   linkToPartners?: boolean;
   showButtons?: boolean;
+  noAutoScroll?: boolean;
 }
 
-const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: PartnersCarouselProps) => {
+const PartnersCarousel = ({ linkToPartners = false, showButtons = false, noAutoScroll = false }: PartnersCarouselProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const scrollAmount = 300;
   const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
@@ -55,6 +56,8 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
   
   // Auto scroll function - updated to move from right to left with 1s delay
   useEffect(() => {
+    if (noAutoScroll) return;
+    
     const startAutoScroll = () => {
       autoScrollInterval.current = setInterval(() => {
         if (carouselRef.current) {
@@ -80,11 +83,11 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
       }
       clearTimeout(initialDelay);
     };
-  }, []);
+  }, [noAutoScroll]);
 
   // Pause auto-scroll on hover
   const handleMouseEnter = () => {
-    if (autoScrollInterval.current) {
+    if (!noAutoScroll && autoScrollInterval.current) {
       clearInterval(autoScrollInterval.current);
       autoScrollInterval.current = null;
     }
@@ -92,7 +95,7 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
 
   // Resume auto-scroll when mouse leaves - updated to move from right to left
   const handleMouseLeave = () => {
-    if (!autoScrollInterval.current) {
+    if (!noAutoScroll && !autoScrollInterval.current) {
       autoScrollInterval.current = setInterval(() => {
         if (carouselRef.current) {
           if (carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth) {
@@ -104,6 +107,8 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
       }, 1000); // Changed to 1 second
     }
   };
+
+  const carouselClassNames = noAutoScroll ? "flex overflow-x-auto space-x-6 pb-4 no-scrollbar" : "flex overflow-x-auto space-x-6 pb-4 no-scrollbar animate-carousel";
 
   return (
     <div className="relative">
@@ -131,7 +136,7 @@ const PartnersCarousel = ({ linkToPartners = false, showButtons = false }: Partn
       {/* Carousel */}
       <div 
         ref={carouselRef}
-        className="flex overflow-x-auto space-x-6 pb-4 no-scrollbar animate-carousel"
+        className={carouselClassNames}
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
