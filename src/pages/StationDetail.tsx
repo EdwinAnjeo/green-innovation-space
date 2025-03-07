@@ -1,4 +1,3 @@
-<lov-code>
 import { useParams } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Phone, Mail, Users, CheckCircle2, ArrowRight, Quote } from 'lucide-react';
@@ -554,3 +553,120 @@ const StationDetail = () => {
               <div className="bg-white rounded-xl shadow-md p-6 h-full">
                 <h3 className="text-xl font-bold mb-1">{station.engineer.name}</h3>
                 <p className="text-atdc-green font-medium mb-4">Center Engineer</p>
+                
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold mb-2">Engineer's Bio</h4>
+                  <p className="text-gray-600">{station.engineer.bio}</p>
+                </div>
+                
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold mb-2">Engineer's Remarks</h4>
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-atdc-green">
+                    <div className="flex gap-3">
+                      <Quote className="text-atdc-green flex-shrink-0" />
+                      <p className="text-gray-600 italic">{station.engineer.comment}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-8 text-center">
+            <Button className="bg-atdc-green hover:bg-atdc-green/90 text-white">
+              Get in Touch
+            </Button>
+          </div>
+        </div>
+      </section>
+      
+      <section className="py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-atdc-green mb-4">Staff Establishment</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Our center employs qualified professionals dedicated to supporting agricultural development.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+            {station.staff.breakdown.map((item, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-md p-6 text-center">
+                <p className="text-3xl font-bold text-atdc-green mb-2">{item.count}</p>
+                <p className="text-gray-600">{item.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-atdc-green mb-4">Our Functions</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We provide various services to support agricultural development in our region.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+            {station.functions.map((func, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-md p-6">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1">
+                    <CheckCircle2 className="text-atdc-green" />
+                  </div>
+                  <p className="text-gray-600">{func}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <section className="py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-atdc-green mb-4">Success Story</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              See how our center has made a positive impact in our community.
+            </p>
+          </div>
+          
+          {station.successStories.length > 0 && (
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+                <div className="md:flex">
+                  <div className="md:w-2/5">
+                    <img 
+                      src={station.successStories[0].image} 
+                      alt={station.successStories[0].title} 
+                      className="w-full h-64 md:h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-6 md:w-3/5">
+                    <h3 className="text-xl font-bold mb-3 text-atdc-green">
+                      {station.successStories[0].title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {station.successStories[0].story}
+                    </p>
+                    <div className="mt-4">
+                      <Link to="/success-stories" className="inline-flex items-center text-atdc-green font-medium">
+                        Read more success stories
+                        <ArrowRight size={16} className="ml-1" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default StationDetail;
+
