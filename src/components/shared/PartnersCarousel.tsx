@@ -1,9 +1,11 @@
-
 import { useRef, useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Partner } from './carousel/types';
+import CarouselIndicators from './carousel/CarouselIndicators';
+import CarouselNavButtons from './carousel/CarouselNavButtons';
+import PartnersGrid from './carousel/PartnersGrid';
+import PartnerCard from './carousel/PartnerCard';
 
-// Partner data with updated logo URLs
+// Partner data
 const partners = [
   {
     name: "National Agricultural and Rural Inclusive Growth Project (NARIGP)",
@@ -51,7 +53,6 @@ const PartnersCarousel = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto slide function
   useEffect(() => {
     if (noAutoScroll || showAllPartners) return;
     
@@ -61,12 +62,10 @@ const PartnersCarousel = ({
       }, 3000);
     };
 
-    // Initial delay before starting the auto-scroll
     const initialDelay = setTimeout(() => {
       startAutoScroll();
-    }, 1000); // 1 second delay
+    }, 1000);
 
-    // Clean up interval and timeout on unmount
     return () => {
       if (autoScrollInterval.current) {
         clearInterval(autoScrollInterval.current);
@@ -83,12 +82,6 @@ const PartnersCarousel = ({
     setActiveIndex((prevIndex) => (prevIndex + 1) % partners.length);
   };
 
-  // Handle indicators click
-  const goToSlide = (index: number) => {
-    setActiveIndex(index);
-  };
-
-  // Pause auto scroll on hover
   const handleMouseEnter = () => {
     if (!noAutoScroll && autoScrollInterval.current) {
       clearInterval(autoScrollInterval.current);
@@ -96,7 +89,6 @@ const PartnersCarousel = ({
     }
   };
 
-  // Resume auto scroll when mouse leaves
   const handleMouseLeave = () => {
     if (!noAutoScroll && !autoScrollInterval.current && !showAllPartners) {
       autoScrollInterval.current = setInterval(() => {
@@ -105,38 +97,8 @@ const PartnersCarousel = ({
     }
   };
 
-  // If showing all partners in a grid (for Partners page)
   if (showAllPartners) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {partners.map((partner, index) => (
-          <div 
-            key={index}
-            className="flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden card-hover"
-          >
-            <div className="h-40 flex items-center justify-center p-6 bg-white">
-              <img 
-                src={partner.logo} 
-                alt={partner.name} 
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-            <div className="p-6 border-t">
-              <h3 className="font-bold text-lg mb-2 line-clamp-2">{partner.name}</h3>
-              <p className="text-gray-600 text-sm mb-4">{partner.description}</p>
-              <a 
-                href={partner.website} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-[#CC5500] hover:bg-[#CC5500]/90 text-white px-4 py-2 rounded-md text-sm font-medium"
-              >
-                Learn More
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
+    return <PartnersGrid partners={partners} />;
   }
 
   return (
@@ -145,20 +107,13 @@ const PartnersCarousel = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Bootstrap-style carousel */}
-      <div id="partnersCarousel" className="carousel relative rounded-xl overflow-hidden shadow-lg">
-        {/* Carousel indicators */}
-        <ol className="carousel-indicators absolute bottom-4 left-0 right-0 flex justify-center z-10 space-x-2">
-          {partners.map((_, index) => (
-            <li 
-              key={index} 
-              onClick={() => goToSlide(index)}
-              className={`inline-block w-3 h-3 rounded-full cursor-pointer transition-colors ${activeIndex === index ? 'bg-white' : 'bg-white/50'}`}
-            ></li>
-          ))}
-        </ol>
+      <div className="carousel relative rounded-xl overflow-hidden shadow-lg">
+        <CarouselIndicators 
+          partners={partners} 
+          activeIndex={activeIndex} 
+          onIndicatorClick={setActiveIndex} 
+        />
 
-        {/* Carousel items */}
         <div className="carousel-inner relative w-full overflow-hidden bg-white rounded-xl">
           {partners.map((partner, index) => (
             <div 
@@ -169,21 +124,7 @@ const PartnersCarousel = ({
             >
               <div className="grid grid-cols-1 md:grid-cols-2 h-full">
                 <div className="h-full flex items-center justify-center p-6 bg-white">
-                  {linkToPartners ? (
-                    <Link to="/partners" className="w-full h-full flex items-center justify-center">
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name} 
-                        className="max-h-full max-w-full object-contain hover:scale-105 transition-transform duration-300"
-                      />
-                    </Link>
-                  ) : (
-                    <img 
-                      src={partner.logo} 
-                      alt={partner.name} 
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  )}
+                  <PartnerCard partner={partner} linkToPartners={linkToPartners} />
                 </div>
                 <div className="p-6 flex flex-col justify-center">
                   <h3 className="font-bold text-lg mb-2">{partner.name}</h3>
@@ -205,22 +146,10 @@ const PartnersCarousel = ({
           ))}
         </div>
         
-        {/* Navigation buttons */}
-        <button 
-          onClick={handlePrevClick}
-          className="carousel-control-prev absolute top-1/2 left-4 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
-          aria-label="Previous"
-        >
-          <ArrowLeft size={20} className="text-atdc-green" />
-        </button>
-        
-        <button 
-          onClick={handleNextClick}
-          className="carousel-control-next absolute top-1/2 right-4 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
-          aria-label="Next"
-        >
-          <ArrowRight size={20} className="text-atdc-green" />
-        </button>
+        <CarouselNavButtons 
+          onPrevClick={handlePrevClick} 
+          onNextClick={handleNextClick} 
+        />
       </div>
     </div>
   );
