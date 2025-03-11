@@ -108,12 +108,11 @@ const PartnersCarousel = ({
   // If showing all partners in a grid (for Partners page)
   if (showAllPartners) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {partners.map((partner, index) => (
           <div 
             key={index}
-            className="flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden card-hover animate-fade-in"
-            style={{ animationDelay: `${index * 100}ms` }}
+            className="flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden card-hover"
           >
             <div className="h-40 flex items-center justify-center p-6 bg-white">
               <img 
@@ -142,7 +141,7 @@ const PartnersCarousel = ({
 
   return (
     <div 
-      className="relative max-w-6xl mx-auto w-full"
+      className="relative max-w-6xl mx-auto"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -175,7 +174,7 @@ const PartnersCarousel = ({
                       <img 
                         src={partner.logo} 
                         alt={partner.name} 
-                        className="max-h-full max-w-full object-contain hover-scale"
+                        className="max-h-full max-w-full object-contain hover:scale-105 transition-transform duration-300"
                       />
                     </Link>
                   ) : (
