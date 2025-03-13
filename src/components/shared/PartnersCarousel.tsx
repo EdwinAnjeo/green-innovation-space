@@ -6,35 +6,35 @@ import CarouselNavButtons from './carousel/CarouselNavButtons';
 import PartnersGrid from './carousel/PartnersGrid';
 import PartnerCard from './carousel/PartnerCard';
 
-// Partner data
+// Updated partner data with new images
 const partners = [
+  {
+    name: "Japanese International Cooperation Agency (JICA)",
+    abbreviation: "JICA",
+    logo: "/lovable-uploads/89eaafc4-3bcf-417e-a07c-3c7f09790813.png",
+    description: "Technical cooperation for sustainable agricultural development",
+    website: "https://www.jica.go.jp/english/"
+  },
+  {
+    name: "Kenya Cereal Enhancement Programme (KCEP-CRAL)",
+    abbreviation: "KCEP-CRAL",
+    logo: "/lovable-uploads/75a10da8-740d-484c-827f-eb28a70af60e.png",
+    description: "Climate Resilient Agricultural Livelihoods",
+    website: "https://www.kcepcral.go.ke"
+  },
   {
     name: "National Agricultural and Rural Inclusive Growth Project (NARIGP)",
     abbreviation: "NARIGP",
-    logo: "/lovable-uploads/3efe2b4e-7c58-4305-80a6-69d338efb5a8.png",
+    logo: "/lovable-uploads/a2739879-b8e5-47b3-a5de-57af63da284b.png",
     description: "Supporting inclusive and sustainable agricultural growth",
     website: "https://www.narigp.go.ke"
   },
   {
     name: "Small Scale Irrigation & Value Addition Project (SIVAP)",
     abbreviation: "SIVAP",
-    logo: "/lovable-uploads/066da1e9-8b5a-461f-b6b8-09ea6dbed5a0.png",
+    logo: "/lovable-uploads/5d61d08e-ed22-40b1-9bc2-f8ab646075c8.png",
     description: "Enhancing irrigation infrastructure and value addition capabilities",
     website: "https://www.sivap.go.ke" 
-  },
-  {
-    name: "Kenya Cereal Enhancement Programme (KCEP)",
-    abbreviation: "KCEP",
-    logo: "/lovable-uploads/f22165ef-cea5-4463-97ba-dba0a7a9089b.png",
-    description: "Improving food security through cereal production enhancement",
-    website: "https://www.kcep.go.ke"
-  },
-  {
-    name: "Japanese International Cooperation Agency (JICA)",
-    abbreviation: "JICA",
-    logo: "/lovable-uploads/157d64f5-29e9-44b9-9de3-2bb3f7237c93.png",
-    description: "Technical cooperation for sustainable agricultural development",
-    website: "https://www.jica.go.jp/english/"
   }
 ];
 
