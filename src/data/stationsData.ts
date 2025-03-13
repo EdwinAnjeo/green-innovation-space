@@ -1,3 +1,4 @@
+
 export interface StaffBreakdown {
   title: string;
   count: number;
@@ -70,6 +71,116 @@ export const defaultStation: Station = {
     }
   ]
 };
+
+// Success stories data that will be used in the Blog/Success Stories page
+export const successStoriesData = [
+  {
+    id: 1,
+    title: "ATDC Mtwapa & SMEs in the Coconut Value Chain",
+    image: "https://images.unsplash.com/photo-1622971446533-9b7e33a663d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    description: "ATDC Mtwapa collaborates with SMEs in the coconut value chain across Kilifi, Mombasa, Kwale, and Taita-Taveta counties. The focus is on developing, fabricating, and testing appropriate agro-processing technologies for coconut.",
+    achievements: [
+      "Conducted 72 trainings on the coconut value chain since 2018.",
+      "Incubated 20 MSMEs focusing on coconut, cassava, and peanuts.",
+      "Developed coconut scrapers, milk pressers, fermentation chambers, and direct oil press machines.",
+      "Promoted technological advancements, including cold-pressing methods for oil extraction."
+    ],
+    challenges: [
+      "Climate change resilience through conservation agriculture training.",
+      "Market access issues by improving product quality for SME branding."
+    ],
+    station: "mtwapa",
+    date: "2023-05-15"
+  },
+  {
+    id: 2,
+    title: "Bando Chemical Belts Trial for Rice Combine Harvesters",
+    image: "https://images.unsplash.com/photo-1534483509719-3feaee7c30da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    description: "ATDC Siakago partnered with Bando Chemicals Ltd to pilot high-quality belts for rice combine harvesters at Mwea Irrigation Scheme.",
+    achievements: [
+      "Piloted Bando belts with MRGM (Kubota harvester) and Mr. John Njenga (FM World 102 harvester).",
+      "Positive feedback: Increased efficiency, reduced breakdowns, and improved harvesting in wet conditions.",
+      "Linked service providers to Bando suppliers for sustained access to quality belts."
+    ],
+    challenges: [
+      "Poor-quality belts led to frequent breakdowns and high maintenance costs.",
+      "Service providers previously relied on importing unreliable belts from Tanzania."
+    ],
+    station: "siakago",
+    date: "2023-06-22"
+  },
+  {
+    id: 3,
+    title: "Enhancing Sustainability in the Rice Value Chain",
+    image: "https://images.unsplash.com/photo-1559113202-7e00c8c7e929?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    description: "Collaborative efforts between ATDC Siakago, AFICAT, and JICA Advisor to introduce innovative solutions in the rice value chain.",
+    achievements: [
+      "Introduced moisture meters through KETT Electric Company to optimize rice harvesting.",
+      "Piloted telematic devices for monitoring farm machinery performance.",
+      "Demonstrated high-quality Bando belts, improving efficiency of combine harvesters.",
+      "Showcased EBARA pumps, linking Kenyan businesses with Japanese manufacturers.",
+      "Introduced mechanized rice transplanters, reducing manual labor from 18 hours to 45 minutes per acre."
+    ],
+    challenges: [
+      "Inefficient rice transplanting methods.",
+      "Lack of remote monitoring for farm machinery.",
+      "Poor post-harvest handling due to inadequate moisture measurement."
+    ],
+    station: "siakago",
+    date: "2023-07-10"
+  },
+  {
+    id: 4,
+    title: "ATDC Katumani SME Incubation (Beekeeping & Agro-Processing)",
+    image: "https://images.unsplash.com/photo-1551884831-bbf3cdc6469e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    description: "ATDC Katumani supported SMEs like Julius Mutuku's beekeeping venture and Muuo wa Sombe's agro-processing business in Makueni.",
+    achievements: [
+      "Sponsored Mutuku for advanced beekeeping training at the National Beekeeping Institute.",
+      "Helped Muuo wa Sombe scale tamarind and baobab jam production from 200 to 1,000 bottles weekly.",
+      "Assisted Muuo wa Sombe in business registration as 'Kambu Production.'"
+    ],
+    challenges: [
+      "Market expansion: SMEs struggled to meet KEBS certification requirements.",
+      "Climate change effects led to a shift from dairy farming to beekeeping."
+    ],
+    station: "katumani",
+    date: "2023-08-05"
+  },
+  {
+    id: 5,
+    title: "ATDC Nakuru & SMEs in the Potato Value Chain",
+    image: "https://images.unsplash.com/photo-1524207874394-5ec7c8c8e1a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    description: "ATDC Nakuru supports SMEs in the potato value chain through training, mechanization, and quality assurance.",
+    achievements: [
+      "Partnered with Spurs Crisps and Willy Products to help them meet KEBS standards and access supermarket shelves.",
+      "Provided SMEs with training on food safety and climate-smart farming.",
+      "Developed cost-effective harvesting equipment in ATDC's 200 sq. ft. fabrication workshop."
+    ],
+    challenges: [
+      "Lack of quality control in potato processing.",
+      "Limited mechanization in harvesting and post-harvest handling."
+    ],
+    station: "nakuru",
+    date: "2023-09-15"
+  },
+  {
+    id: 6,
+    title: "ATDC Siakago Power Tiller Demonstration (JICA Project)",
+    image: "https://images.unsplash.com/photo-1591105577035-4c8c55d0f6ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    description: "ATDC Siakago and JICA introduced a power tiller with multiple attachments for mechanized farming.",
+    achievements: [
+      "Demonstrated ploughing, leveling, and reaping to service providers in Mbeere-North.",
+      "Addressed efficiency concerns, fuel consumption, and machine adaptability.",
+      "Ensured service providers were linked to suppliers for continuous access to mechanized solutions."
+    ],
+    challenges: [
+      "High cost of farm machinery without financing options.",
+      "Lack of awareness on available mechanization solutions."
+    ],
+    station: "siakago",
+    date: "2023-10-20"
+  }
+];
 
 export const stationsData: Record<string, Station> = {
   "mpeketoni": {

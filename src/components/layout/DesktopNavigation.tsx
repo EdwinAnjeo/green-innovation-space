@@ -60,16 +60,8 @@ const DesktopNavigation = ({ scrolled }: DesktopNavigationProps) => {
         Partners
       </Link>
       
-      <Link to="/events" className={`nav-link text-sm ${location.pathname === '/events' ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}>
-        Events
-      </Link>
-      
       <Link to="/success-stories" className={`nav-link text-sm ${location.pathname === '/success-stories' ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}>
         Success Stories
-      </Link>
-      
-      <Link to="/contact" className={`nav-link text-sm ${location.pathname === '/contact' ? 'text-white font-semibold' : 'text-white hover:text-white/80'} transition-colors`}>
-        Contact Us
       </Link>
       
       <Button asChild className="bg-atdc-orange hover:bg-atdc-orange/90 text-sm px-3 py-1 h-auto">

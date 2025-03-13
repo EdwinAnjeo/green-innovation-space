@@ -21,8 +21,8 @@ const SuccessStorySection: React.FC<SuccessStorySectionProps> = ({ station }) =>
         
         {station.successStories.length > 0 && (
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {station.successStories.slice(0, 2).map((story, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
+              {station.successStories.slice(0, 1).map((story, index) => (
                 <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden hover-scale">
                   <div className="md:flex md:flex-col h-full">
                     <div className="md:h-48">
@@ -51,7 +51,7 @@ const SuccessStorySection: React.FC<SuccessStorySectionProps> = ({ station }) =>
               ))}
             </div>
             
-            {station.successStories.length > 2 && (
+            {station.successStories.length > 1 && (
               <div className="text-center mt-8">
                 <Link 
                   to="/success-stories" 

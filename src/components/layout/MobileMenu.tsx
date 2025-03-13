@@ -85,27 +85,11 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         </Link>
         
         <Link 
-          to="/events"
-          className="py-3 text-base border-b border-gray-100"
-          onClick={onClose}
-        >
-          Events
-        </Link>
-        
-        <Link 
           to="/success-stories"
           className="py-3 text-base border-b border-gray-100"
           onClick={onClose}
         >
           Success Stories
-        </Link>
-        
-        <Link 
-          to="/contact"
-          className="py-3 text-base border-b border-gray-100"
-          onClick={onClose}
-        >
-          Contact Us
         </Link>
         
         <div className="mt-auto">
