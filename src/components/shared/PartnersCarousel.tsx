@@ -1,3 +1,4 @@
+
 import { useRef, useEffect, useState } from 'react';
 import { Partner } from './carousel/types';
 import CarouselIndicators from './carousel/CarouselIndicators';
@@ -130,6 +131,9 @@ const PartnersCarousel = ({
                   <h3 className="font-bold text-lg mb-2">{partner.name}</h3>
                   <p className="text-sm font-semibold text-atdc-green mb-2">{partner.abbreviation}</p>
                   <p className="text-gray-600 text-sm mb-4">{partner.description}</p>
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center bg-atdc-green/80 text-white px-4 py-1 rounded">
+                    <span className="text-sm font-medium">{partner.abbreviation}</span>
+                  </div>
                   {showButtons && (
                     <a 
                       href={partner.website} 

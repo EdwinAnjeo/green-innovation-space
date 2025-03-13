@@ -12,7 +12,7 @@ const CarouselNavButtons = ({ onPrevClick, onNextClick }: CarouselNavButtonsProp
       <button 
         onClick={onPrevClick}
         className="carousel-control-prev absolute top-1/2 left-4 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
-        aria-label="Previous"
+        aria-label="Previous slide"
       >
         <ArrowLeft size={20} className="text-atdc-green" />
       </button>
@@ -20,7 +20,7 @@ const CarouselNavButtons = ({ onPrevClick, onNextClick }: CarouselNavButtonsProp
       <button 
         onClick={onNextClick}
         className="carousel-control-next absolute top-1/2 right-4 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
-        aria-label="Next"
+        aria-label="Next slide"
       >
         <ArrowRight size={20} className="text-atdc-green" />
       </button>

@@ -93,11 +93,11 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         </Link>
         
         <Link 
-          to="/blog"
+          to="/success-stories"
           className="py-3 text-base border-b border-gray-100"
           onClick={onClose}
         >
-          Blog
+          Success Stories
         </Link>
         
         <Link 
@@ -110,8 +110,8 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         
         <div className="mt-auto">
           <Button asChild className="w-full bg-atdc-orange hover:bg-atdc-orange/90">
-            <Link to="/login" onClick={onClose}>
-              Staff Portal
+            <Link to="/contact" onClick={onClose}>
+              Contact Us
             </Link>
           </Button>
         </div>

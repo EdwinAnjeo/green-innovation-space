@@ -36,7 +36,7 @@ const Index = () => {
       <section className="py-20 bg-[#F1F0FB]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4 animate-fade-in">Our Impact</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-atdc-green mb-4 animate-fade-in">Performance Statistics</h2>
             <p className="text-gray-600 max-w-2xl mx-auto animate-fade-in animation-delay-200">
               For over 15 years, ATDC has been transforming Kenya's agricultural landscape through training, 
               innovation, and sustainable farming practices.

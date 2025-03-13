@@ -13,7 +13,7 @@ const SuccessStorySection: React.FC<SuccessStorySectionProps> = ({ station }) =>
     <section className="py-12">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-atdc-green mb-4">Success Stories</h2>
+          <h2 className="text-3xl font-bold text-atdc-green mb-4">Priority Value Chain</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             See how our center has made a positive impact in our community.
           </p>
@@ -57,7 +57,7 @@ const SuccessStorySection: React.FC<SuccessStorySectionProps> = ({ station }) =>
                   to="/success-stories" 
                   className="inline-flex items-center text-atdc-green font-medium hover:text-atdc-green/80"
                 >
-                  View all success stories
+                  View all priority value chains
                   <ArrowRight size={16} className="ml-1" />
                 </Link>
               </div>
