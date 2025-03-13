@@ -4,7 +4,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import { successStoriesData } from '@/data/stationsData';
+
+// Import directly from Blog.tsx
+import { successStoriesData } from '@/pages/Blog';
 
 const SuccessStoryDetail = () => {
   const { storyId } = useParams();
@@ -72,12 +74,6 @@ const SuccessStoryDetail = () => {
                       ))}
                     </ul>
                   </>
-                )}
-                
-                {story.story && (
-                  <div className="mt-6">
-                    <p className="text-gray-700 whitespace-pre-line">{story.story}</p>
-                  </div>
                 )}
               </div>
             </div>

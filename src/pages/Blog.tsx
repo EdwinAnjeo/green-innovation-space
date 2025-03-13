@@ -1,11 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '@/components/layout/Layout';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowRight, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogClose } from '@/components/ui/dialog';
 
 // Define the success stories data with detailed information
-const successStoriesData = [
+export const successStoriesData = [
   {
     id: "1",
     title: "ATDC Mtwapa & SMEs in the Coconut Value Chain",
@@ -103,6 +104,8 @@ const successStoriesData = [
 ];
 
 const Blog = () => {
+  const [selectedStory, setSelectedStory] = useState<typeof successStoriesData[0] | null>(null);
+
   return (
     <Layout>
       <section className="py-20 pt-32">
@@ -133,13 +136,14 @@ const Blog = () => {
                   <p className="text-gray-600 mb-4 line-clamp-3">{story.description}</p>
                   
                   <div className="mt-auto">
-                    <Link 
-                      to={`/success-stories/${story.id}`} 
-                      className="inline-flex items-center text-[#CC5500] font-medium"
+                    <Button 
+                      variant="link"
+                      className="text-[#CC5500] font-medium p-0 h-auto"
+                      onClick={() => setSelectedStory(story)}
                     >
                       Read full story
                       <ArrowRight size={16} className="ml-1" />
-                    </Link>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -147,6 +151,51 @@ const Blog = () => {
           </div>
         </div>
       </section>
+
+      {/* Full Story Dialog */}
+      <Dialog open={!!selectedStory} onOpenChange={(open) => !open && setSelectedStory(null)}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
+          
+          {selectedStory && (
+            <div>
+              <div className="relative w-full h-64 mb-6">
+                <img 
+                  src={selectedStory.image} 
+                  alt={selectedStory.title} 
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              
+              <h2 className="text-2xl font-bold text-atdc-green mb-4">{selectedStory.title}</h2>
+              <p className="text-gray-700 mb-6">{selectedStory.description}</p>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-atdc-green mb-2">Key Achievements</h3>
+                  <ul className="list-disc pl-5 space-y-2">
+                    {selectedStory.keyAchievements.map((item, index) => (
+                      <li key={index} className="text-gray-700">{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-semibold text-atdc-green mb-2">Challenges Addressed</h3>
+                  <ul className="list-disc pl-5 space-y-2">
+                    {selectedStory.challengesAddressed.map((item, index) => (
+                      <li key={index} className="text-gray-700">{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };

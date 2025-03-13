@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { Partner } from './types';
+import { Button } from '@/components/ui/button';
 
 interface PartnerCardProps {
   partner: Partner;
@@ -17,7 +18,7 @@ const PartnerCard = ({ partner, linkToPartners }: PartnerCardProps) => {
   );
 
   return (
-    <div className="flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden card-hover">
+    <div className="flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
       <div className="h-40 flex items-center justify-center p-6 bg-white">
         {linkToPartners ? (
           <Link to="/partners" className="w-full h-full flex items-center justify-center">
@@ -27,17 +28,23 @@ const PartnerCard = ({ partner, linkToPartners }: PartnerCardProps) => {
           <LogoImage />
         )}
       </div>
-      <div className="p-6 border-t">
+      <div className="p-6 border-t flex flex-col flex-1">
         <h3 className="font-bold text-lg mb-2 line-clamp-2">{partner.name}</h3>
         <p className="text-gray-600 text-sm mb-4">{partner.description}</p>
-        <a 
-          href={partner.website} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="inline-block bg-[#CC5500] hover:bg-[#CC5500]/90 text-white px-4 py-2 rounded-md text-sm font-medium"
-        >
-          Learn More
-        </a>
+        <div className="mt-auto">
+          <Button 
+            asChild
+            className="bg-[#CC5500] hover:bg-[#CC5500]/90 text-white"
+          >
+            <a 
+              href={partner.website} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Learn More
+            </a>
+          </Button>
+        </div>
       </div>
     </div>
   );
