@@ -63,7 +63,7 @@ const successStoriesData = [
     keyAchievements: [
       "Sponsored Mutuku for advanced beekeeping training at the National Beekeeping Institute.",
       "Helped Muuo wa Sombe scale tamarind and baobab jam production from 200 to 1,000 bottles weekly.",
-      "Assisted Muuo wa Sombe in business registration as "Kambu Production.""
+      "Assisted Muuo wa Sombe in business registration as \"Kambu Production.\""
     ],
     challengesAddressed: [
       "Market expansion: SMEs struggled to meet KEBS certification requirements.",
