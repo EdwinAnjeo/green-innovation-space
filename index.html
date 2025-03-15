@@ -1,18 +1,612 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>green-innovation-space</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-    <meta property="og:image" content="/og-image.png" />
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agriculture Training Development Center</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .animate-fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .hover-scale:hover {
+      transform: scale(1.03);
+      transition: transform 0.3s ease;
+    }
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .bg-atdc-green {
+      background-color: #0a672f;
+    }
+
+    .text-atdc-green {
+      color: #0a672f;
+    }
+
+    .bg-atdc-orange {
+      background-color: #CC5500;
+    }
+
+    .text-atdc-orange {
+      color: #CC5500;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+      flex: 0 0 25%;
+      padding: 0 1rem;
+    }
+
+    @media (max-width: 1024px) {
+      .carousel-item {
+        flex: 0 0 33.333%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .carousel-item {
+        flex: 0 0 50%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .carousel-item {
+        flex: 0 0 100%;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-atdc-green text-white py-2">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2">
+          <img src="/lovable-uploads/7d8b1801-1c96-468a-9000-c7b72f68c9a3.png" alt="Court of Arms Logo" class="h-10 md:h-12">
+          <div>
+            <h1 class="text-white text-sm md:text-base font-bold leading-tight">
+              Agriculture Training<br>Development Center
+            </h1>
+            <p class="text-white/80 text-xs">Ministry of Agriculture | Kenya</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center space-x-6">
+          <a href="index.html" class="nav-link text-sm text-white font-semibold transition-colors">
+            Home
+          </a>
+          <a href="about.html" class="nav-link text-sm text-white hover:text-white/80 transition-colors">
+            About Us
+          </a>
+          
+          <!-- ATDC Stations Dropdown -->
+          <div class="relative group">
+            <button class="flex items-center space-x-1 text-sm text-white hover:text-white/80 transition-colors">
+              <span>ATDC Stations</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            
+            <div class="absolute left-0 mt-2 w-64 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white border border-gray-100 py-2 z-50">
+              <div class="max-h-[50vh] overflow-y-auto">
+                <a href="stations.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-atdc-green">
+                  All Stations
+                </a>
+                <hr class="my-1 border-gray-100">
+                <a href="stations/mpeketoni.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-atdc-green">ATDC Mpeketoni</a>
+                <a href="stations/mtwapa.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-atdc-green">ATDC Mtwapa</a>
+                <a href="stations/nakuru.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-atdc-green">ATDC Nakuru</a>
+                <a href="stations/bungoma.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-atdc-green">ATDC Bungoma</a>
+                <a href="stations/siakago.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-atdc-green">ATDC Siakago</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="partners.html" class="nav-link text-sm text-white hover:text-white/80 transition-colors">
+            Partners
+          </a>
+          
+          <a href="success-stories.html" class="nav-link text-sm text-white hover:text-white/80 transition-colors">
+            Success Stories
+          </a>
+          
+          <a href="contact.html" class="bg-atdc-orange hover:bg-atdc-orange/90 text-sm px-3 py-1 h-auto rounded text-white">
+            Contact Us
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="lg:hidden z-50" id="mobileMenuButton">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white" id="menuIcon"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white hidden" id="closeIcon"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="fixed inset-0 bg-white z-40 transform transition-transform duration-300 translate-x-full lg:hidden" id="mobileMenu">
+      <div class="flex flex-col h-full pt-24 px-8 pb-6 overflow-y-auto">
+        <a href="index.html" class="py-3 text-base border-b border-gray-100">Home</a>
+        <a href="about.html" class="py-3 text-base border-b border-gray-100">About Us</a>
+        
+        <!-- Mobile ATDC Stations Dropdown -->
+        <div class="py-3 border-b border-gray-100">
+          <button class="flex items-center justify-between w-full text-base" id="stationsDropdownButton">
+            <span>ATDC Stations</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="stationsIcon"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          
+          <div class="mt-2 ml-4 space-y-2 hidden" id="stationsDropdown">
+            <a href="stations.html" class="block py-2 text-gray-700">All Stations</a>
+            <a href="stations/mpeketoni.html" class="block py-2 text-gray-700">ATDC Mpeketoni</a>
+            <a href="stations/mtwapa.html" class="block py-2 text-gray-700">ATDC Mtwapa</a>
+            <a href="stations/nakuru.html" class="block py-2 text-gray-700">ATDC Nakuru</a>
+            <a href="stations/bungoma.html" class="block py-2 text-gray-700">ATDC Bungoma</a>
+            <a href="stations/siakago.html" class="block py-2 text-gray-700">ATDC Siakago</a>
+          </div>
+        </div>
+        
+        <a href="partners.html" class="py-3 text-base border-b border-gray-100">Partners</a>
+        <a href="success-stories.html" class="py-3 text-base border-b border-gray-100">Success Stories</a>
+        
+        <div class="mt-auto">
+          <a href="contact.html" class="block w-full bg-atdc-orange hover:bg-atdc-orange/90 text-white px-4 py-2 rounded text-center">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-20 w-full">
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
+      
+      <div class="container relative mx-auto px-4 md:px-6 z-10">
+        <div class="max-w-3xl mx-auto text-center text-white">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 animate-fade-in">
+            Agricultural Training Development Centers
+          </h1>
+          
+          <p class="text-xl md:text-2xl text-white/90 mb-4 animate-fade-in">
+            Advancing Kenyan Agriculture Through Innovation
+          </p>
+          
+          <div class="text-xl md:text-2xl text-white/90 mb-8 animate-fade-in">
+            We develop and transfer appropriate agricultural mechanization technologies
+          </div>
+          
+          <div class="animate-fade-in">
+            <a href="about.html" class="inline-block bg-atdc-green hover:bg-atdc-green/90 text-white font-medium px-6 py-3 rounded-md shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              Learn More About ATDC
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="glass-card p-6 animate-fade-in text-center">
+            <div class="bg-atdc-green rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3 class="text-3xl font-bold mb-2">10</h3>
+            <p class="text-gray-600">Stations across the country to cover all the 47 counties in Kenya</p>
+          </div>
+          
+          <div class="glass-card p-6 animate-fade-in text-center">
+            <div class="bg-atdc-orange rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            <h3 class="text-3xl font-bold mb-2">30+</h3>
+            <p class="text-gray-600">Established technologies per year across different value chains in the country</p>
+          </div>
+          
+          <div class="glass-card p-6 animate-fade-in text-center">
+            <div class="bg-blue-500 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3 class="text-3xl font-bold mb-2">76</h3>
+            <p class="text-gray-600">Projects Managed by ATDC Engineers in different counties annually</p>
+          </div>
+          
+          <div class="glass-card p-6 animate-fade-in text-center">
+            <div class="bg-purple-500 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="text-3xl font-bold mb-2">55</h3>
+            <p class="text-gray-600">Professional Engineers, Food Scientists & Technicians at each Station</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATDC Stations Preview -->
+    <section class="bg-[#F2FCE2] py-16">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-atdc-green mb-4 animate-fade-in">Our ATDC Stations</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto animate-fade-in">
+            Explore our network of Agricultural Training and Development Centers spread across Kenya, 
+            each specializing in region-specific agricultural practices.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover-scale h-full flex flex-col animate-fade-in">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="/lovable-uploads/ad276c5e-d66b-428d-bc21-c665d0afe25c.png"
+                alt="ATDC Mpeketoni"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              />
+            </div>
+            <div class="p-4 flex-grow">
+              <h3 class="text-lg font-bold mb-2">ATDC Mpeketoni</h3>
+              <p class="text-gray-600 text-sm mb-4">Specializing in coastal agriculture and fisheries.</p>
+            </div>
+            <div class="p-4 pt-0">
+              <a 
+                href="stations/mpeketoni.html" 
+                class="text-atdc-green font-medium inline-flex items-center hover:underline"
+              >
+                Learn more
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover-scale h-full flex flex-col animate-fade-in" style="animation-delay: 200ms">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="/lovable-uploads/110e6d67-493c-4314-bce6-0d3ad2358ce8.png"
+                alt="ATDC Mtwapa"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              />
+            </div>
+            <div class="p-4 flex-grow">
+              <h3 class="text-lg font-bold mb-2">ATDC Mtwapa</h3>
+              <p class="text-gray-600 text-sm mb-4">Coastal agricultural research and development.</p>
+            </div>
+            <div class="p-4 pt-0">
+              <a 
+                href="stations/mtwapa.html" 
+                class="text-atdc-green font-medium inline-flex items-center hover:underline"
+              >
+                Learn more
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover-scale h-full flex flex-col animate-fade-in" style="animation-delay: 400ms">
+            <div class="h-48 overflow-hidden">
+              <img
+                src="/lovable-uploads/779c56b6-c1af-4e6c-bb82-25559402520c.png"
+                alt="ATDC Nakuru"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              />
+            </div>
+            <div class="p-4 flex-grow">
+              <h3 class="text-lg font-bold mb-2">ATDC Nakuru</h3>
+              <p class="text-gray-600 text-sm mb-4">Agricultural innovation and technology transfer.</p>
+            </div>
+            <div class="p-4 pt-0">
+              <a 
+                href="stations/nakuru.html" 
+                class="text-atdc-green font-medium inline-flex items-center hover:underline"
+              >
+                Learn more
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-12">
+          <a href="stations.html" class="inline-block bg-[#CC5500] hover:bg-[#CC5500]/90 text-white px-6 py-3 rounded-md">
+            View All Stations 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Carousel Section -->
+    <section class="bg-white py-12 w-full">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="mb-10 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-atdc-green mb-4">Our Partners</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            We collaborate with various organizations to promote agricultural development across Kenya.
+          </p>
+        </div>
+        
+        <div class="carousel w-full">
+          <div class="carousel-inner" id="partnersCarousel">
+            <!-- Partners will be loaded here dynamically -->
+          </div>
+          
+          <!-- Carousel Navigation -->
+          <button class="absolute top-1/2 left-4 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors" id="prevPartnerBtn" aria-label="Previous slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a672f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          
+          <button class="absolute top-1/2 right-4 -translate-y-1/2 z-10 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors" id="nextPartnerBtn" aria-label="Next slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a672f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          
+          <!-- Carousel Indicators -->
+          <div class="absolute bottom-4 left-0 right-0 flex justify-center z-10 space-x-2" id="partnerIndicators"></div>
+        </div>
+        
+        <div class="text-center mt-6">
+          <a href="partners.html" class="inline-block text-atdc-green font-medium hover:underline">
+            Learn more about our partners
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Official Symbol Section -->
+  <section class="bg-gray-50 py-10 text-center w-full">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex flex-col items-center justify-center">
+        <img 
+          src="/lovable-uploads/7d8b1801-1c96-468a-9000-c7b72f68c9a3.png" 
+          alt="Coat of Arms of Kenya" 
+          class="h-24 md:h-32 mb-4"
+        />
+        <p class="text-gray-600 max-w-xl mx-auto text-sm md:text-base">
+          Official Website of Agriculture Training Development Center
+          <br />
+          Republic of Kenya
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-atdc-green text-white py-12">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-lg font-bold mb-4">About ATDC</h3>
+          <p class="text-white/80 mb-4">
+            We develop and transfer appropriate agricultural mechanization technologies and train farmers on best practices.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-white hover:text-white/80">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="text-white hover:text-white/80">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+            <a href="#" class="text-white hover:text-white/80">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="about.html" class="text-white/80 hover:text-white">About Us</a></li>
+            <li><a href="stations.html" class="text-white/80 hover:text-white">ATDC Stations</a></li>
+            <li><a href="partners.html" class="text-white/80 hover:text-white">Partners</a></li>
+            <li><a href="success-stories.html" class="text-white/80 hover:text-white">Success Stories</a></li>
+            <li><a href="contact.html" class="text-white/80 hover:text-white">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4">Contact Information</h3>
+          <div class="space-y-2">
+            <div class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <p class="text-white/80">Kilimo House, Cathedral Road, Nairobi</p>
+            </div>
+            <div class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <p class="text-white/80">+254 20 2718870</p>
+            </div>
+            <div class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 mt-1"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <p class="text-white/80">info@atdc.go.ke</p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-4">Our Newsletter</h3>
+          <p class="text-white/80 mb-4">Subscribe to receive updates on ATDC activities and agricultural innovations.</p>
+          <form class="space-y-2">
+            <input type="email" placeholder="Your email address" class="w-full px-4 py-2 rounded-md text-gray-800">
+            <button type="submit" class="w-full bg-atdc-orange hover:bg-atdc-orange/90 text-white px-4 py-2 rounded-md">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/20 mt-8 pt-8 text-center text-white/60 text-sm">
+        <p>&copy; 2023 Agriculture Training Development Center. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById('mobileMenuButton').addEventListener('click', function() {
+      const menu = document.getElementById('mobileMenu');
+      const menuIcon = document.getElementById('menuIcon');
+      const closeIcon = document.getElementById('closeIcon');
+      
+      if (menu.classList.contains('translate-x-full')) {
+        menu.classList.replace('translate-x-full', 'translate-x-0');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        menu.classList.replace('translate-x-0', 'translate-x-full');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+    
+    // Stations Dropdown Toggle
+    document.getElementById('stationsDropdownButton').addEventListener('click', function() {
+      const dropdown = document.getElementById('stationsDropdown');
+      const icon = document.getElementById('stationsIcon');
+      
+      if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        dropdown.classList.add('hidden');
+        icon.style.transform = 'rotate(0)';
+      }
+    });
+    
+    // Partners Carousel
+    const partners = [
+      {
+        name: "Kenya Agricultural and Livestock Research Organization (KALRO)",
+        logo: "/lovable-uploads/2dcb97cb-5ec7-4fa7-be53-f6e23e3d9236.png",
+        description: "Research organization that contributes to agricultural innovation and development.",
+        website: "https://www.kalro.org"
+      },
+      {
+        name: "Japan International Cooperation Agency (JICA)",
+        logo: "/lovable-uploads/fc1a3bd2-69f4-4cd3-9cce-57c4b7ed89a1.png",
+        description: "International cooperation agency that provides technical assistance to developing countries.",
+        website: "https://www.jica.go.jp/english"
+      },
+      {
+        name: "Food and Agriculture Organization (FAO)",
+        logo: "/lovable-uploads/e4d5c9d6-ceb1-4b83-ba76-429e4e352d0c.png",
+        description: "UN agency that leads international efforts to defeat hunger and improve nutrition.",
+        website: "https://www.fao.org"
+      },
+      {
+        name: "World Food Programme (WFP)",
+        logo: "/lovable-uploads/4c50bfb8-6aac-41a1-bd7e-0c787d00c8a1.png",
+        description: "Leading humanitarian organization saving lives and changing lives, delivering food assistance.",
+        website: "https://www.wfp.org"
+      }
+    ];
+    
+    const carousel = document.getElementById('partnersCarousel');
+    const indicators = document.getElementById('partnerIndicators');
+    let activeIndex = 0;
+    
+    // Generate partner cards
+    function renderPartners() {
+      carousel.innerHTML = '';
+      indicators.innerHTML = '';
+      
+      partners.forEach((partner, index) => {
+        // Create partner card
+        const card = document.createElement('div');
+        card.className = 'carousel-item';
+        card.innerHTML = `
+          <div class="flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden card-hover h-full mx-2">
+            <div class="h-40 flex items-center justify-center p-6 bg-white">
+              <img src="${partner.logo}" alt="${partner.name}" class="max-h-full max-w-full object-contain" />
+            </div>
+            <div class="p-6 border-t flex flex-col flex-1">
+              <h3 class="font-bold text-lg mb-2 line-clamp-2">${partner.name}</h3>
+              <p class="text-gray-600 text-sm mb-4">${partner.description}</p>
+            </div>
+          </div>
+        `;
+        carousel.appendChild(card);
+        
+        // Create indicator
+        const indicator = document.createElement('button');
+        indicator.className = `inline-block w-3 h-3 rounded-full cursor-pointer transition-colors ${activeIndex === index ? 'bg-white' : 'bg-white/50'}`;
+        indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        indicator.addEventListener('click', () => {
+          goToSlide(index);
+        });
+        indicators.appendChild(indicator);
+      });
+      
+      updateCarousel();
+    }
+    
+    function updateCarousel() {
+      const slideWidth = document.querySelector('.carousel-item').clientWidth;
+      carousel.style.transform = `translateX(-${activeIndex * slideWidth}px)`;
+      
+      // Update indicators
+      const dots = indicators.querySelectorAll('button');
+      dots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.remove('bg-white/50');
+          dot.classList.add('bg-white');
+        } else {
+          dot.classList.remove('bg-white');
+          dot.classList.add('bg-white/50');
+        }
+      });
+    }
+    
+    function goToSlide(index) {
+      activeIndex = index;
+      updateCarousel();
+    }
+    
+    document.getElementById('prevPartnerBtn').addEventListener('click', () => {
+      activeIndex = (activeIndex === 0) ? partners.length - 1 : activeIndex - 1;
+      updateCarousel();
+    });
+    
+    document.getElementById('nextPartnerBtn').addEventListener('click', () => {
+      activeIndex = (activeIndex === partners.length - 1) ? 0 : activeIndex + 1;
+      updateCarousel();
+    });
+    
+    // Initialize carousel
+    renderPartners();
+    
+    // Auto-scroll carousel
+    setInterval(() => {
+      activeIndex = (activeIndex === partners.length - 1) ? 0 : activeIndex + 1;
+      updateCarousel();
+    }, 5000);
+    
+    // Handle window resize
+    window.addEventListener('resize', updateCarousel);
+  </script>
+</body>
 </html>
